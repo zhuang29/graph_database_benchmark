@@ -1,5 +1,5 @@
-export RAW_DATA_PATH=/home/zhiyi/raw/snb/tigergraph/social_network-1-test/ #change to your raw data file
-export TOTAL_FILE_NUMBER=1 # numThreads specified in ldbc_snb_datagen/params.ini
+#export RAW_DATA_PATH=/home/zhiyi/raw/snb/tigergraph/social_network-1-test/ #change to your raw data file
+#export TOTAL_FILE_NUMBER=1 # numThreads specified in ldbc_snb_datagen/params.ini
 
 echo "split vertrex place into city, country, continent"
 g++ --std=c++11 SplitPlace.cpp -o SplitPlace

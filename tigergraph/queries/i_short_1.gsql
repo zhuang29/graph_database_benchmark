@@ -1,0 +1,17 @@
+use graph ldbc
+drop query i_short_1 
+
+create query i_short_1(UINT vid) for graph ldbc {
+
+	SumAccum<UINT> @cityid;
+	Person = {person.*};
+	city = {place.*};
+
+    Person =   SELECT s
+                FROM Person:s-(person_isLocatedIn_place)->:t
+                WHERE s.id == vid
+				ACCUM s.@cityid = t.id;
+    PRINT Person.firstName, Person.lastName, Person.birthday, Person.locationIP, Person.browserUsed, Person.@cityid, Person.gender, Person.creationDate;
+
+}
+install query i_short_1

@@ -1,0 +1,58 @@
+use graph ldbc
+drop query i_short_6
+
+create query i_short_6(UINT vid) for graph ldbc {
+    SumAccum<UINT> @postID;
+    SumAccum<UINT> @forumID;
+    SumAccum<UINT> @personID;
+    SumAccum<String> @firstName;
+    SumAccum<String> @lastName;
+    SumAccum<String> @@postID;
+    
+    Post = {post.*};
+	Comment = {comments.*};
+ 	ReplyToPost = {comments.*};
+	ReplyLeft = {comments.*};
+   	Forum1 = {forum.*};
+    Forum2 = {forum.*};
+  
+//if message is post
+//get forum that contains the post  
+    Forum1 = SELECT s 
+                FROM Forum1:s-(forum_containerOf_post)->:t
+                WHERE t.id == vid;
+
+//get moderator info and save to forum accums
+    Forum1 = SELECT s
+                FROM Forum1:s-(forum_hasModerator_person)->:t
+                ACCUM s.@personID = t.id,
+                      s.@firstName = t.firstName,
+                      s.@lastName = t.lastName;
+
+//if meessage is comment, how to get origninal post if commment is reply to comment
+//get original post
+//    Post = SELECT s FROM Post:s-(comments_replyOf_post_reverse)->:t WHERE t.id == vid;
+
+//    Forum2 = SELECT s 
+//                FROM Forum2:s-(forum_containerOf_post)->:t;
+
+//    Forum2 = SELECT s
+//                FROM Forum2:s-(forum_hasModerator_person)->:t
+//               ACCUM s.@personID = t.id,
+//                      s.@firstName = t.firstName,
+//                      s.@lastName = t.lastName;
+	
+	WHILE ReplyLeft.size() != 0 LIMIT 100 DO
+		ReplyToPost = ReplyLeft;
+		ReplyLeft = SELECT t
+				FROM ReplyLeft:s-(comments_replyOf_comments)->:t;
+	END;
+	Post = SELEC t
+			FROM ReplyToPost:s-(comments_replyOf_post)->:t;			
+   
+ 
+    print Forum1.id, Forum1.title, Forum1.@personID, Forum1.@firstName, Forum1.@lastName;
+//    print Forum2.id, Forum2.title, Forum2.@personID, Forum2.@firstName, Forum2.@lastName;
+    
+}
+install query i_short_6

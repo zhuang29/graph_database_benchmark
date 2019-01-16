@@ -1,0 +1,14 @@
+use graph ldbc
+drop query i_short_NO
+
+create query i_short_NO(STRING vid) for graph ldbc {
+
+
+
+
+
+
+
+     
+}
+install query i_short_NO

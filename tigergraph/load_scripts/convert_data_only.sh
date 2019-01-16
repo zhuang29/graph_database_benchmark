@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # replace labels with one starting with an uppercase letter
-#export RAW_DATA_DIR=/home/zhiyi/raw/snb/tigergraph/social_network-3
-#export POSTFIX=_0_0.csv
+export RAW_DATA_DIR=/home/zhiyi/raw/snb/tigergraph/social_network-300
+export POSTFIX=_0_0.csv
 sed -i "s/|city$/|City/" "${RAW_DATA_DIR}/place${POSTFIX}"
 sed -i "s/|country$/|Country/" "${RAW_DATA_DIR}/place${POSTFIX}"
 sed -i "s/|continent$/|Continent/" "${RAW_DATA_DIR}/place${POSTFIX}"

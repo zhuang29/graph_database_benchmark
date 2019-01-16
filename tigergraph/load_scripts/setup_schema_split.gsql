@@ -111,8 +111,8 @@ use graph ldbc
 CREATE LOADING JOB load_ldbc_edge for graph ldbc {
   #vertex folders
   DEFINE FILENAME person_file;
-  DEFINE FILENAME person_mail_file;
-  DEFINE FILENAME person_speak_file;
+//  DEFINE FILENAME person_mail_file;
+//  DEFINE FILENAME person_speak_file;
   DEFINE FILENAME post_file;
   DEFINE FILENAME tag_file;
   DEFINE FILENAME city_file;
@@ -125,10 +125,10 @@ CREATE LOADING JOB load_ldbc_edge for graph ldbc {
 
   LOAD person_file
               TO VERTEX person VALUES ($0, $0, $1, $2, $3, $4, $5, $6, $7, _, _) USING header="true", separator="|";
-  LOAD person_mail_file
-              TO VERTEX person VALUES ($0, _, _, _, _, _, _, _, _, $1, _) USING header="true", separator="|";
-  LOAD person_speak_file
-              TO VERTEX person VALUES ($0, _, _, _, _, _, _, _, _, _, $1) USING header="true", separator="|";
+//  LOAD person_mail_file
+//              TO VERTEX person VALUES ($0, _, _, _, _, _, _, _, _, $1, _) USING header="true", separator="|";
+//  LOAD person_speak_file
+//              TO VERTEX person VALUES ($0, _, _, _, _, _, _, _, _, _, $1) USING header="true", separator="|";
   LOAD post_file
               TO VERTEX post VALUES ($0, $0, $1, $2, $3, $4, $5, $6, $7) USING header="true", separator="|";
   LOAD tag_file

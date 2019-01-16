@@ -11,33 +11,31 @@ CREATE VERTEX place (PRIMARY_ID id UINT, id UINT, name STRING, url STRING, types
 
 
 
-CREATE DIRECTED EDGE post_isLocatedIn_place (FROM post, TO place) WITH REVERSE_EDGE="post_isLocatedIn_place_reverse"
-CREATE DIRECTED EDGE comments_isLocatedIn_place (FROM comments, TO place) WITH REVERSE_EDGE="comments_isLocatedIn_place_reverse"
-CREATE DIRECTED EDGE organisation_isLocatedIn_place (FROM organisation, TO place) WITH REVERSE_EDGE="university_isLocatedIn_place_reverse"
-CREATE DIRECTED EDGE person_isLocatedIn_place (FROM person, TO place) WITH REVERSE_EDGE="person_isLocatedIn_place_reverse"
-CREATE DIRECTED EDGE person_studyAt_organisation (FROM person, TO organisation, classYear INT) WITH REVERSE_EDGE="person_studyAt_organisation_reverse"
-CREATE DIRECTED EDGE person_workAt_organisation (FROM person, TO organisation, workFrom INT) WITH REVERSE_EDGE="person_workAt_organisation_reverse"
-
+CREATE DIRECTED EDGE post_isLocatedIn_place (FROM post, TO place)
+CREATE DIRECTED EDGE comments_isLocatedIn_place (FROM comments, TO place)
+CREATE DIRECTED EDGE organisation_isLocatedIn_place (FROM organisation, TO place)
+CREATE DIRECTED EDGE person_isLocatedIn_place (FROM person, TO place)
+CREATE DIRECTED EDGE person_studyAt_organisation (FROM person, TO organisation, classYear INT)
+CREATE DIRECTED EDGE person_workAt_organisation (FROM person, TO organisation, workFrom INT)
 CREATE DIRECTED EDGE place_isPartOf_place (FROM place, TO place) WITH REVERSE_EDGE="place_isPartOf_place_reverse"
 
 
 CREATE UNDIRECTED EDGE person_knows_person (FROM person, TO person, creationDate UINT)
-// WITH REVERSE_EDGE="person_knows_person_reverse"
-CREATE DIRECTED EDGE comments_replyOf_post (FROM comments, TO post) WITH REVERSE_EDGE="comments_replyOf_post_reverse"
-CREATE DIRECTED EDGE comments_replyOf_comments (FROM comments, TO comments) WITH REVERSE_EDGE="comments_replyOf_comments_reverse"
-CREATE DIRECTED EDGE post_hasCreator_person (FROM post, TO person) WITH REVERSE_EDGE="post_hasCreator_person_reverse"
-CREATE DIRECTED EDGE post_hasTag_tag (FROM post, TO tag) WITH REVERSE_EDGE="post_hasTag_tag_reverse"
-CREATE DIRECTED EDGE comments_hasCreator_person (FROM comments, TO person) WITH REVERSE_EDGE="comments_hasCreator_person_reverse"
-CREATE DIRECTED EDGE comments_hasTag_tag (FROM comments, TO tag) WITH REVERSE_EDGE="comments_hasTag_tag_reverse"
-CREATE DIRECTED EDGE forum_containerOf_post (FROM forum, TO post) WITH REVERSE_EDGE="forum_containerOf_post_reverse"
-CREATE DIRECTED EDGE forum_hasMember_person (FROM forum, TO person, joinDate UINT) WITH REVERSE_EDGE="forum_hasMember_person_reverse"
-CREATE DIRECTED EDGE forum_hasModerator_person (FROM forum, TO person) WITH REVERSE_EDGE="forum_hasModerator_person_reverse"
-CREATE DIRECTED EDGE forum_hasTag_tag (FROM forum, TO tag) WITH REVERSE_EDGE="forum_hasTag_tag_reverse"
-CREATE DIRECTED EDGE person_hasInterest_tag (FROM person, TO tag) WITH REVERSE_EDGE="person_hasInterest_tag_reverse"
-CREATE DIRECTED EDGE person_likes_comments (FROM person, TO comments, creationDate UINT) WITH REVERSE_EDGE="person_likes_comments_reverse"
-CREATE DIRECTED EDGE person_likes_post (FROM person, TO post, creationDate UINT) WITH REVERSE_EDGE="person_likes_post_reverse"
-CREATE DIRECTED EDGE tag_hasType_tagclass (FROM tag, TO tagclass) WITH REVERSE_EDGE="tag_hasType_tagclass_reverse"
-CREATE DIRECTED EDGE tagclass_isSubclassOf_tagclass (FROM tagclass, TO tagclass) WITH REVERSE_EDGE="tagclass_isSubclassOf_tagclass_reverse"
+CREATE DIRECTED EDGE comments_replyOf_post (FROM comments, TO post) 
+CREATE DIRECTED EDGE comments_replyOf_comments (FROM comments, TO comments) 
+CREATE DIRECTED EDGE post_hasCreator_person (FROM post, TO person) 
+CREATE DIRECTED EDGE post_hasTag_tag (FROM post, TO tag) 
+CREATE DIRECTED EDGE comments_hasCreator_person (FROM comments, TO person) 
+CREATE DIRECTED EDGE comments_hasTag_tag (FROM comments, TO tag) 
+CREATE DIRECTED EDGE forum_containerOf_post (FROM forum, TO post) 
+CREATE DIRECTED EDGE forum_hasMember_person (FROM forum, TO person, joinDate UINT) 
+CREATE DIRECTED EDGE forum_hasModerator_person (FROM forum, TO person) 
+CREATE DIRECTED EDGE forum_hasTag_tag (FROM forum, TO tag) 
+CREATE DIRECTED EDGE person_hasInterest_tag (FROM person, TO tag) 
+CREATE DIRECTED EDGE person_likes_comments (FROM person, TO comments, creationDate UINT) 
+CREATE DIRECTED EDGE person_likes_post (FROM person, TO post, creationDate UINT) 
+CREATE DIRECTED EDGE tag_hasType_tagclass (FROM tag, TO tagclass) 
+CREATE DIRECTED EDGE tagclass_isSubclassOf_tagclass (FROM tagclass, TO tagclass) 
 CREATE GRAPH ldbc (*)
 
 use graph ldbc

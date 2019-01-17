@@ -1,0 +1,7 @@
+use graph ldbc
+drop query i_complex_
+
+create query i_complex_(STRING vid) for graph ldbc {
+     
+}
+install query i_complex_

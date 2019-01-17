@@ -1,0 +1,73 @@
+use graph ldbc
+drop query bi_4
+
+create query bi_4(String countryName, String tagclassName) for graph ldbc {
+    SumAccum<String> @modID;
+    SumAccum<INT> @postCount;
+
+    SetAccum<String> @@cityID;
+    SetAccum<String> @@personID;
+    SetAccum<String> @@forumID;
+    SetAccum<String> @@postID1;
+    SetAccum<String> @@postID2;
+    SetAccum<String> @@tagID;
+    SetAccum<String> @@tagclassID;
+
+    City = {city.*};
+    Person = {person.*};
+    Forum = {forum.*};
+    Tag = {tag.*};
+    Tagclass = {tagclass.*};
+    Post = {post.*};
+
+//get city in country
+    City = SELECT s 
+        FROM City:s-(city_isPartOf_country)->:t 
+        WHERE t.name == countryName
+        ACCUM @@cityID += s.id;
+
+//get person in city
+    Person = SELECT s
+        FROM Person:s-(person_isLocatedIn_city)->:t
+        WHERE t.id IN @@cityID
+        ACCUM @@personID += s.id;
+
+//get forum moderated by person
+    Forum = SELECT s
+        FROM Forum:s-(forum_hasModerator_person)->:t
+        WHERE t.id IN @@personID
+        ACCUM s.@modID = t.id, @@forumID += s.id;
+
+//get post in forum
+    Post1 = SELECT s
+        FROM Post:s-(forum_containerOf_post_reverse)->:t
+        WHERE t.id IN @@forumID
+        ACCUM @@postID1 += s.id;
+
+//get tag from tagclass
+    Tag = SELECT s 
+        FROM Tag:s-(tag_hasType_tagclass)->:t
+        WHERE t.name == tagclassName
+        ACCUM @@tagID += s.id;
+
+//get post from tag
+    Post2 = SELECT s
+        FROM Post:s-(post_hasTag_tag)->:t
+        WHERE t.id IN @@tagID AND s.id IN @@postID1
+        ACCUM @@postID2 += s.id;
+
+//get result: forum with post count
+    Forum = SELECT t
+        FROM Post:s-(forum_containerOf_post_reverse)->:t
+        WHERE s.id IN @@postID2 AND t.id IN @@forumID
+        ACCUM t.@postCount += 1
+        ORDER BY t.@postCount DESC, t.id
+        limit 20;
+    
+
+
+    PRINT Forum.id, Forum.title, Forum.creationDate, Forum.@modID, Forum.@postCount;
+
+    
+}
+install query bi_4

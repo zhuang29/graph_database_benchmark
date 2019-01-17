@@ -1,0 +1,61 @@
+use graph ldbc
+drop query bi_5
+
+create query bi_5(String countryName) for graph ldbc {
+    SumAccum<INT> @memberCount;
+    SumAccum<INT> @postCount;
+
+    SetAccum<String> @@cityID;
+    SetAccum<String> @@personID;
+    SetAccum<String> @@forumID;
+    SetAccum<String> @@postID;
+    SetAccum<String> @@tagID;
+    SetAccum<String> @@tagclassID;
+
+    City = {city.*};
+    Person = {person.*};
+    Forum = {forum.*};
+    Tag = {tag.*};
+    Tagclass = {tagclass.*};
+    Post = {post.*};
+
+//get city in country
+    City = SELECT s 
+        FROM City:s-(city_isPartOf_country)->:t 
+        WHERE t.name == countryName
+        ACCUM @@cityID += s.id;
+
+//get person in city
+    Person = SELECT s
+        FROM Person:s-(person_isLocatedIn_city)->:t
+        WHERE t.id IN @@cityID
+        ACCUM @@personID += s.id;
+
+//get top 100 forums from member
+    Forum = SELECT s
+        FROM Forum:s-(forum_hasMember_person)->:t
+        WHERE t.id IN @@personID
+        ACCUM @@forumID += s.id, s.@memberCount += 1
+        ORDER BY s.@memberCount DESC, s.id
+        LIMIT 100;
+
+//get post in top 100 forums
+    Post = SELECT s
+        FROM Post:s-(forum_containerOf_post_reverse)->:t
+        WHERE t.id IN @@forumID
+        ACCUM @@postID += s.id;
+
+//get person with postCount
+    Person = SELECT s
+        FROM Person:s-(post_hasCreator_person_reverse)->:t
+        WHERE t.id IN @@postID
+        ACCUM s.@postCount += 1
+        ORDER BY s.@postCount DESC, s.id
+        LIMIT 100;
+
+
+    PRINT Person.id, Person.firstName, Person.lastName, Person.creationDate, Person.@postCount;
+
+    
+}
+install query bi_5

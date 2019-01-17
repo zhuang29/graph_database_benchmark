@@ -1,0 +1,181 @@
+use graph ldbc
+drop query i_short_2
+
+create query i_short_2(UINT vid) for graph ldbc {
+	SetAccum<UINT> @@postSet;
+	SetAccum<UINT> @@commentsSet;
+	SetAccum<UINT> @@creatorSet;
+	SetAccum<UINT> @@messageSet;
+	SetAccum<UINT> @@replySet;
+	SetAccum<UINT> @@postFromReplySet;
+	SetAccum<UINT> @@replyToPostSet;	
+	SumAccum<UINT> @@current;
+
+	SumAccum<UINT> @postID;
+	SumAccum<UINT> @creatorID;
+	SumAccum<STRING> @creatorFirst;
+	SumAccum<STRING> @creatorLast;
+	UINT tempMessageID;
+	UINT tempCreator;
+	STRING tempFirst;
+	STRING tempLast;
+	UINT postID;
+	UINT tempPostID;
+	INT length;
+	INT size;
+	UINT cur;
+	
+	Person = {person.*};
+	Creator = {person.*};
+	Message = {post.*, comments.*};
+	
+	Prev = {comments.*};
+	Post = {post.*};
+	Comments ={comments.*};
+	Reply = {comments.*};
+	Reply1 ={comments.*};
+	ReplyToPost = {comments.*};
+
+	Result = {post.*, comments.*};
+	CurrentReply = {comments.*};
+	length = Comments.size();
+	//get person from vid
+	Person = SELECT s 
+			FROM Person:s 
+			WHERE s.id == vid;
+
+
+	//get latest message
+	Message = SELECT s
+			FROM Message:s-((post_hasCreator_person|comments_hasCreator_person):e)->person:t
+			WHERE t.id == vid
+			ORDER BY s.creationDate DESC
+			LIMIT 10;
+
+
+	Message = SELECT s FROM Message:s
+			ACCUM @@messageSet += s.id;
+
+//	PostTest = SELECT s FROM Message:s-(post_hasCreator_person)->:t;
+
+//	PRINT PostTest;
+
+	//get comment in message
+	Reply = SELECT s
+			FROM Message:s-(comments_hasCreator_person)->:t
+			WHERE t.id == vid
+			ACCUM @@replySet += s.id;
+
+	Reply1 = SELECT s FROM Comments:s WHERE s.id IN @@replySet;
+
+	PRINT Reply1, @@replySet;
+
+
+	ReplyToPost = SELECT s FROM Reply1:s-(comments_replyOf_post)->:t
+		ACCUM @@replyToPostSet += s.id;
+
+	PRINT @@replyToPostSet;
+
+	PRINT ReplyToPost, @@replyToPostSet;
+//	//for each comment in message, get 1 hop comment to post
+	FOREACH item IN @@replySet DO
+		IF item != -1 THEN 
+			CurrentReply = SELECT s FROM Reply1:s WHERE s.id == item;
+			PRINT CurrentReply;
+			size = CurrentReply.size();
+			WHILE size != 0 LIMIT 100 DO
+				Prev = SELECT s FROM CurrentReply:s ACCUM cur = s.id;
+				CurrentReply = SELECT t
+					FROM Comments:s-(comments_replyOf_comments)->:t
+					WHERE s.id == cur;
+				size = CurrentReply.size();
+				IF size == 0 THEN BREAK; END;
+			END;
+			CurrentReply = SELECT s 
+				FROM Prev:s
+				ACCUM @@replyToPostSet += s.id;
+			PRINT CurrentReply;
+		END;
+	END;
+
+	PRINT @@replyToPostSet;
+//
+	//get post from 1 hop comment
+
+	Post = SELECT s
+			FROM Post:s-(comments_replyOf_post_reverse)->:t
+			WHERE t.id IN @@replyToPostSet
+			ACCUM @@postFromReplySet += s.id;
+	PRINT Post;
+	//get post creator info
+	Post = SELECT s
+			FROM Post:s-(post_hasCreator_person)->:t
+			ACCUM s.@creatorID = t.id,
+				s.@creatorFirst = t.firstName,
+				s.@creatorLast = t.lastName;
+
+	PRINT Post;
+	//pass person info and postID to 1 hop comment
+	ReplyToPost = SELECT t 
+			FROM Post:s-(comments_replyOf_post_reverse)->:t
+			ACCUM t.@postID = s.id,
+				t.@creatorID = s.@creatorID,
+				t.@creatorFirst = s.@creatorFirst,
+				t.@creatorLast = s.@creatorLast,
+				@@replyToPostSet += t.id;
+
+	PRINT ReplyToPost;
+
+	//pass person info and postID to all comments in post	
+	FOREACH item IN @@replyToPostSet DO
+		Temp = SELECT s FROM ReplyToPost:s WHERE s.id == item
+				ACCUM tempMessageID = s.id,
+					tempCreator = s.@creatorID,
+					tempFirst = s.@creatorFirst,
+					tempLast = s.@creatorLast,
+					tempPostID = s.@postID;
+	
+//	//save person info and PostID from 1 kop comments to message set
+		IF Temp.size() == 1 THEN
+			Result = SELECT s
+					FROM Result:s
+					ACCUM CASE WHEN s.id == item THEN
+						s.@creatorID = tempCreator,
+						s.@creatorFirst = tempFirst,
+						s.@creatorLast = tempLast,
+						s.@postID = tempPostID
+			END;
+		END;
+		size = Temp.size();
+		WHILE size != 0 LIMIT 100 DO
+			Temp= SELECT t
+					FROM Temp:s-(comments_replyOf_comments_reverse)->:t
+					ACCUM tempMessageID = s.@creatorID,
+						tempFirst = s.@creatorFirst,
+						tempLast = s.@creatorLast,
+						tempPostID = s.@postID;
+			IF Temp.size() == 1 THEN
+				Result = SELECT s
+					FROM Result:s
+					ACCUM CASE WHEN s.id == tempMessageID THEN
+						s.@creatorID = tempCreator,
+						s.@creatorFirst = tempFirst,
+						s.@creatorLast = tempLast,
+						s.@postID = postID
+			END;
+		END;
+	END;
+
+//
+//	Result = SELECT s FROM Result:s Order by s.creationDate DESC, s.id DESC;
+//
+//
+//	PRINT Message; 
+//
+//	PRINT @@messageSet;
+
+	PRINT "---------------Result-------------------------";
+	PRINT Result;
+	END;     
+}
+install query i_short_2

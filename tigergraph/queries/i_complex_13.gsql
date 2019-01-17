@@ -1,0 +1,43 @@
+use graph ldbc
+drop query i_complex_13
+
+CREATE QUERY i_complex_13 (VERTEX<person> S, VERTEX<person> T, INT maxDepth) FOR GRAPH ldbc{
+
+  MinAccum<INT> @@dis;
+  OrAccum @@found  = false;
+  OrAccum @notSeen = true;
+  ListAccum<STRING> @pathResult; 
+
+  Start (ANY) = {S};
+
+//intialization
+  Start = SELECT v
+    FROM Start:v
+    ACCUM v.@notSeen = false, v.@pathResult = to_string(v.id);
+
+//get shortest path from S to T within maxDepth  
+  WHILE NOT @@found LIMIT maxDepth DO
+    Start = SELECT v
+      FROM Start - (person_knows_person:e) -> :v
+      WHERE v.@notSeen
+      ACCUM v.@notSeen = false,
+            FOREACH path IN Start.@pathResult DO
+                v.@pathResult += (path + "-" + to_string(v.id)), 
+				@@dis += 1
+            END,
+            CASE WHEN v == T
+              THEN @@found += true
+            END;
+  END;
+  
+  IF S.id == T.id THEN
+    PRINT "0";
+  ELSE IF @@found THEN
+    Result = {T};
+    PRINT Result [Result.@pathResult];
+    PRINT @@dis;
+  ELSE 
+    PRINT "-1";
+  END;
+}
+INSTALL QUERY i_complex_13

@@ -1,0 +1,10 @@
+use graph ldbc
+drop query bi_1
+
+create query bi_1(String date) for graph ldbc {
+
+
+
+     
+}
+install query bi_1

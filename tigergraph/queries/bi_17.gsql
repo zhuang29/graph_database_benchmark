@@ -1,0 +1,79 @@
+use graph ldbc
+drop query bi_9
+
+create query bi_9(String tagClass1, String tagClass2, INT threshold) for graph ldbc {
+    SumAccum<INT> @count1;
+    SumAccum<INT> @count2;
+    SumAccum<INT> @memCount;
+
+    SetAccum<String> @@personSet;
+    SetAccum<String> @@forumSet;
+    SetAccum<String> @@postSet2;
+    SetAccum<String> @@postSet1;
+    SetAccum<String> @@tagSet1;
+    SetAccum<String> @@tagSet2;
+
+    SetAccum<String> @@tagclassSet1;
+    SetAccum<String> @@tagclassSet2;
+
+    Person = {person.*};
+    Forum = {forum.*};
+    Tag = {tag.*};
+    Tag1 = {tag.*};
+    Tag2 = {tag.*};
+    Tagclass = {tagclass.*};
+    Tagclass1 = {tagclass.*};
+    Tagclass2 = {tagclass.*};
+    Post = {post.*};
+    Post1 = {post.*};
+    Post2 = {post.*};
+
+
+//get tag1 from tagClass1
+    Tag = SELECT s 
+        FROM Tag:s-(tag_hasType_tagclass)->:t
+        WHERE t.name == tagClass1
+        ACCUM @@tagSet1 += s.id;
+
+//get tag2 from tagClass2
+    Tag = SELECT s 
+        FROM Tag:s-(tag_hasType_tagclass)->:t
+        WHERE t.name == tagClass2
+        ACCUM @@tagSet2 += s.id;
+
+//get post1 from tag1
+    Post1 = SELECT s
+        FROM Post:s-(post_hasTag_tag)->:t
+        WHERE t.id IN @@tagSet1
+        ACCUM @@postSet1 += s.id;
+
+//get post2 from tag2
+    Post2 = SELECT s
+        FROM Post:s-(post_hasTag_tag)->:t
+        WHERE t.id IN @@tagSet2
+        ACCUM @@postSet2 += s.id;
+
+//get forum with post
+    Forum = SELECT s
+        FROM Forum:s-(forum_containerOf_post)->:t
+        WHERE t.id IN @@postSet1 OR t.id IN @@postSet2
+        ACCUM 
+            CASE WHEN t.id IN @@postSet1 THEN s.@count1 += 1 END,
+            CASE WHEN t.id IN @@postSet2 THEN s.@count2 += 1 END,
+            @@forumSet += s.id;
+
+//get forum with memberCount
+    Forum = SELECT s
+        FROM Forum:s-(forum_hasMember_person)->:t
+        ACCUM s.@memCount += 1;
+
+//get forum with memberCount > threshold
+    Forum = SELECT s
+        FROM Forum:s-(forum_hasMember_person)->:t
+        WHERE s.@memCount > threshold
+        ORDER BY abs(s.@count1 - s.@count2) DESC, s.id
+        LIMIT 100;
+
+    PRINT Forum.id, Forum.@count1, Forum.@count2;
+}
+install query bi_9

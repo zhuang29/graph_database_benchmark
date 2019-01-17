@@ -1,0 +1,45 @@
+use graph ldbc
+drop query bi_15
+
+create query bi_15(String countryName) for graph ldbc {
+    SumAccum<INT> @@totalCount;
+    SetAccum<String> @@personSet;
+    SetAccum<String> @@citySet;
+
+    INT socialNormal;
+
+    Person = {person.*};
+    Person1 = {person.*};
+    Person2 = {person.*};
+    City = {city.*};
+    Country = {country.*};
+    
+    Country = SELECT s 
+        FROM country:s
+        WHERE s.name == countryName;
+
+    City = SELECT s
+        FROM city:s-(city_isPartOf_country)->:t
+        WHERE t == Country
+        ACCUM @@citySet += s.id;
+
+    Person1 = SELECT s
+        FROM Person:s-(person_isLocatedIn_city)->:t
+        WHERE t.id IN @@citySet;
+        ACCUM @@personSet += s.id;
+
+    Person1 = SELECT s
+        FROM Person1:s-(person_knows_person)->:t
+        WHERE t.id IN @@personSet
+        ACCUM s.@count += 1, @@totalCount += 1;
+
+    socialNormal = float_to_int(@@totalCount / Person1.size());
+    
+    Person1 = SELECT s
+        WHERE s.@count == socialNormal;
+        ORDER by s.id
+        LIMIT 100;
+
+    PRINT Forum.id, Forum.@count1, Forum.@count2;
+}
+install query bi_15

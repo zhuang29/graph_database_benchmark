@@ -1,0 +1,22 @@
+use graph ldbc
+drop query i_complex_
+
+create query i_complex_(UINT vid, UINT date) for graph ldbc {
+
+
+    Person = {person.*};
+    Post = {post.*};
+    Comment = {comment.*};
+
+    Person = SELECT t
+            FROM Person:s-(person_knows_person)->:t
+            WHERE s.id == vid;
+
+    Person = SELECT s
+            FROM Person:s-(post_hasCreator_person_reverse)->:t
+            WHERE t.creationDate <= date
+            ACCUM
+
+     
+}
+install query i_complex_

@@ -1,0 +1,3 @@
+commentId, commentContent, commentCreationDate, replyAuthorId, replyAuthorFirstName, replyAuthorLastName, replyAuthorKnowsOriginalMessageAuthor
+1236950581249, "yes", 20110817142659961, 10995116284808, "Andrei", "Condariuc", TRUE
+1236950581250, "thanks", 20110817111021570, 4139, "Baruch", "Dego", TRUE

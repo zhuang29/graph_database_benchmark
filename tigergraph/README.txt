@@ -13,15 +13,15 @@ Queries
 LDBC SNB Queries written in GSQL are stored in queries/ directory
 Queries have to be installed before execution
 
-Install a GSQL query by:
+Install a GSQL query
 gsql i_short_1.gsql
 
-Install all queries by:
+Install all queries
 ./install.sh
 
 Run benchmark
 ----------------------------------------
-Run the benchmark by:
+Run the benchmark
 ./run_i_short.sh
 
 Note: make sure you have the read and write permission to the current directory

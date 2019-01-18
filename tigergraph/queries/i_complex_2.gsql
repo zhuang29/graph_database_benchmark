@@ -1,7 +1,7 @@
 use graph ldbc
 drop query i_complex_
 
-create query i_complex_(UINT vid, UINT date) for graph ldbc {
+create query i_complex_(INT vid, UINT date) for graph ldbc {
 
 
     Person = {person.*};

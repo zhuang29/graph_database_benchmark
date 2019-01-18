@@ -1,20 +1,20 @@
 use graph ldbc
 drop query i_short_7
 
-create query i_short_7(UINT vid) for graph ldbc {
+create query i_short_7(INT vid) for graph ldbc {
     OrAccum<BOOL> @knows;
     SumAccum<INT> @@isPost;
     SumAccum<INT> @@isComments;
-    SumAccum<UINT> @personID;
+    SumAccum<INT> @personID;
  	SumAccum<STRING> @firstName;
     SumAccum<STRING> @lastName;
 
-	SetAccum<UINT> @@postSet;
-	SetAccum<UINT> @@commentsSet;
-	SetAccum<UINT> @@replySet;
-	SetAccum<UINT> @@authorSet;
-	SetAccum<UINT> @@replierSet;
-	SetAccum<UINT> @@knowsReplierSet;
+	SetAccum<INT> @@postSet;
+	SetAccum<INT> @@commentsSet;
+	SetAccum<INT> @@replySet;
+	SetAccum<INT> @@authorSet;
+	SetAccum<INT> @@replierSet;
+	SetAccum<INT> @@knowsReplierSet;
 
 	Author = {person.*};
 	Replier = {person.*};

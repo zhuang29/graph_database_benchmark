@@ -1,0 +1,229 @@
+Neo4j not running
+WARNING: neo4j-import is deprecated and support for it will be removed in a future
+version of Neo4j; please use neo4j-admin import instead.
+Neo4j version: 3.5.0
+Importing the contents of these files into /home/zhiyi/ecosys/neo4j-community-3.5.0/data/databases/snb-1.db:
+Nodes:
+  :Message:Comment
+  /home/zhiyi/raw/snb/neo4j/social_network_1/comment_0_0.csv
+
+  :Forum
+  /home/zhiyi/raw/snb/neo4j/social_network_1/forum_0_0.csv
+
+  :Organisation
+  /home/zhiyi/raw/snb/neo4j/social_network_1/organisation_0_0.csv
+
+  :Person
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_0_0.csv
+
+  :Place
+  /home/zhiyi/raw/snb/neo4j/social_network_1/place_0_0.csv
+
+  :Message:Post
+  /home/zhiyi/raw/snb/neo4j/social_network_1/post_0_0.csv
+
+  :TagClass
+  /home/zhiyi/raw/snb/neo4j/social_network_1/tagclass_0_0.csv
+
+  :Tag
+  /home/zhiyi/raw/snb/neo4j/social_network_1/tag_0_0.csv
+Relationships:
+  :HAS_CREATOR
+  /home/zhiyi/raw/snb/neo4j/social_network_1/comment_hasCreator_person_0_0.csv
+
+  :IS_LOCATED_IN
+  /home/zhiyi/raw/snb/neo4j/social_network_1/comment_isLocatedIn_place_0_0.csv
+
+  :REPLY_OF
+  /home/zhiyi/raw/snb/neo4j/social_network_1/comment_replyOf_comment_0_0.csv
+
+  :REPLY_OF
+  /home/zhiyi/raw/snb/neo4j/social_network_1/comment_replyOf_post_0_0.csv
+
+  :CONTAINER_OF
+  /home/zhiyi/raw/snb/neo4j/social_network_1/forum_containerOf_post_0_0.csv
+
+  :HAS_MEMBER
+  /home/zhiyi/raw/snb/neo4j/social_network_1/forum_hasMember_person_0_0.csv
+
+  :HAS_MODERATOR
+  /home/zhiyi/raw/snb/neo4j/social_network_1/forum_hasModerator_person_0_0.csv
+
+  :HAS_TAG
+  /home/zhiyi/raw/snb/neo4j/social_network_1/forum_hasTag_tag_0_0.csv
+
+  :HAS_INTEREST
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_hasInterest_tag_0_0.csv
+
+  :IS_LOCATED_IN
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_isLocatedIn_place_0_0.csv
+
+  :KNOWS
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_knows_person_0_0.csv
+
+  :LIKES
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_likes_comment_0_0.csv
+
+  :LIKES
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_likes_post_0_0.csv
+
+  :IS_PART_OF
+  /home/zhiyi/raw/snb/neo4j/social_network_1/place_isPartOf_place_0_0.csv
+
+  :HAS_CREATOR
+  /home/zhiyi/raw/snb/neo4j/social_network_1/post_hasCreator_person_0_0.csv
+
+  :HAS_TAG
+  /home/zhiyi/raw/snb/neo4j/social_network_1/comment_hasTag_tag_0_0.csv
+
+  :HAS_TAG
+  /home/zhiyi/raw/snb/neo4j/social_network_1/post_hasTag_tag_0_0.csv
+
+  :IS_LOCATED_IN
+  /home/zhiyi/raw/snb/neo4j/social_network_1/post_isLocatedIn_place_0_0.csv
+
+  :IS_SUBCLASS_OF
+  /home/zhiyi/raw/snb/neo4j/social_network_1/tagclass_isSubclassOf_tagclass_0_0.csv
+
+  :HAS_TYPE
+  /home/zhiyi/raw/snb/neo4j/social_network_1/tag_hasType_tagclass_0_0.csv
+
+  :STUDY_AT
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_studyAt_organisation_0_0.csv
+
+  :WORK_AT
+  /home/zhiyi/raw/snb/neo4j/social_network_1/person_workAt_organisation_0_0.csv
+
+  :IS_LOCATED_IN
+  /home/zhiyi/raw/snb/neo4j/social_network_1/organisation_isLocatedIn_place_0_0.csv
+
+Available resources:
+  Total machine memory: 251.80 GB
+  Free machine memory: 207.03 GB
+  Max heap memory : 26.67 GB
+  Processors: 56
+  Configured max memory: 202.62 GB
+  High-IO: false
+
+Import starting 2019-01-18 00:42:59.059-0800
+  Estimated number of nodes: 3.19 M
+  Estimated number of node properties: 19.04 M
+  Estimated number of relationships: 17.23 M
+  Estimated number of relationship properties: 4.01 M
+  Estimated disk space usage: 1.29 GB
+  Estimated required memory usage: 1.04 GB
+
+InteractiveReporterInteractions command list (end with ENTER):
+  c: Print more detailed information about current stage
+  i: Print more detailed information
+
+(1/4) Node import 2019-01-18 00:42:59.121-0800
+  Estimated number of nodes: 3.19 M
+  Estimated disk space usage: 606.94 MB
+  Estimated required memory usage: 1.04 GB
+.......... .......... .......... .......... ..........   5% ∆1s 12ms
+.......... .......... .......... .......... ..........  10% ∆2ms
+.......... .......... .......... .......... ..........  15% ∆201ms
+.......... .......... .......... .......... ..........  20% ∆401ms
+.......... .......... .......... .......... ..........  25% ∆201ms
+.......... .......... .......... .......... ..........  30% ∆200ms
+.......... .......... ........-. .......... ..........  35% ∆431ms
+.......... .......... .......... .......... ..........  40% ∆0ms
+.......... .......... .......... .......... ..........  45% ∆1ms
+.......... .......... .......... .......... ..........  50% ∆809ms
+.......... .......... .......... .......... ..........  55% ∆201ms
+.......... .......... .......... .......... ..........  60% ∆0ms
+.......... .......... .......... .......... ..........  65% ∆1ms
+.......... .......... .......... .......... ..........  70% ∆201ms
+.......... .......... .......... .......... ..........  75% ∆3s 606ms
+.......... .......... .......... .......... ..........  80% ∆53ms
+.......... .......... .......... .......... ..........  85% ∆0ms
+.......... .......... .......... .......... ..........  90% ∆0ms
+.......... .......... .......... .......... ..........  95% ∆1ms
+.......... .......... .......... .......... .......... 100% ∆0ms
+
+(2/4) Relationship import 2019-01-18 00:43:06.615-0800
+  Estimated number of relationships: 17.23 M
+  Estimated disk space usage: 715.49 MB
+  Estimated required memory usage: 1.04 GB
+.......... .......... .......... .......... ..........   5% ∆1s 147ms
+.......... .......... .......... .......... ..........  10% ∆0ms
+.......... .......... .......... .......... ..........  15% ∆0ms
+.......... .......... .......... .......... ..........  20% ∆1ms
+.......... .......... .......... .......... ..........  25% ∆200ms
+.......... .......... .......... .......... ..........  30% ∆1ms
+.......... .......... .......... .......... ..........  35% ∆0ms
+.......... .......... .......... .......... ..........  40% ∆400ms
+.......... .......... .......... .......... ..........  45% ∆1ms
+.......... .......... .......... .......... ..........  50% ∆200ms
+.......... .......... .......... .......... ..........  55% ∆0ms
+.......... .......... .......... .......... ..........  60% ∆1ms
+.......... .......... .......... .......... ..........  65% ∆0ms
+.......... .......... .......... .......... ..........  70% ∆200ms
+.......... .......... .......... .......... ..........  75% ∆1ms
+.......... .......... .......... .......... ..........  80% ∆0ms
+.......... .......... .......... .......... ..........  85% ∆259ms
+.......... .......... .......... .......... ..........  90% ∆0ms
+.......... .......... .......... .......... ..........  95% ∆1ms
+.......... .......... .......... .......... .......... 100% ∆0ms
+
+(3/4) Relationship linking 2019-01-18 00:43:09.028-0800
+  Estimated required memory usage: 1.03 GB
+.......... .......... .......... .......... ..........   5% ∆401ms
+.......... .......... .......... .......... ..........  10% ∆201ms
+.......... .......... .......... .......... ..........  15% ∆201ms
+.......... .......... .......... .......... ..........  20% ∆200ms
+-......... .......... .......... .......... ..........  25% ∆538ms
+.......... .......... .......... .......... ..........  30% ∆401ms
+.......... .......... .......... .......... ..........  35% ∆200ms
+.......... .......... .......... .......... ..........  40% ∆402ms
+.......... .......... .......... .......... ..........  45% ∆200ms
+.......... .......... .......... .......... ..........  50% ∆401ms
+.......... .......... .......... .......... ..........  55% ∆201ms
+.......... .......... .......... .......... .......-..  60% ∆106ms
+.......... .......... .......... .......... ..........  65% ∆601ms
+.......... .......... .......... .......... ..........  70% ∆401ms
+.......... .......... .......... .......... ..........  75% ∆400ms
+.......... .......... .......... .......... ..........  80% ∆401ms
+.......... .......... .......... .......... ..........  85% ∆200ms
+.......... .......... .......... .......... ..........  90% ∆201ms
+.......... .......... .......... .......... ..........  95% ∆400ms
+.......... .......... .......... .......... .......... 100% ∆136ms
+
+(4/4) Post processing 2019-01-18 00:43:16.181-0800
+  Estimated required memory usage: 1020.01 MB
+.......... .-........ .......... .......... ..........   5% ∆488ms
+.......... .......... .......... .......... ..........  10% ∆202ms
+.......... .......... .....-.... .......... ..........  15% ∆269ms
+.......... .......... .......... .......... ..........  20% ∆200ms
+.......... .......... .......... .......... ..........  25% ∆0ms
+.......... .......... .......... .......... ..........  30% ∆200ms
+.......... .......... .......... .......... ..........  35% ∆0ms
+.......... .......... .......... .......... ..........  40% ∆201ms
+.......... .......... .......... .......... ..........  45% ∆0ms
+.......... .......... .......... .......... ..........  50% ∆201ms
+.......... .......... .......... .......... ..........  55% ∆0ms
+.......... .......... .......... .......... ..........  60% ∆201ms
+.......... .......... .......... .......... ..........  65% ∆0ms
+.......... .......... .......... .......... ..........  70% ∆200ms
+.......... .......... .......... .......... ..........  75% ∆1ms
+.......... .......... .......... .......... ..........  80% ∆200ms
+.......... .......... .......... .......... ..........  85% ∆0ms
+.......... .......... .......... .......... ..........  90% ∆1ms
+.......... .......... .......... .......... ..........  95% ∆98ms
+.......... .......... .......... .......... .......... 100% ∆0ms
+
+
+IMPORT DONE in 22s 981ms. 
+Imported:
+  3181724 nodes
+  17256038 relationships
+  18988710 properties
+Peak memory usage: 1.06 GB
+Neo4j not running
+Starting Neo4j.
+WARNING: Max 1024 open files allowed, minimum of 40000 recommended. See the Neo4j manual.
+Started neo4j (pid 16457). It is available at http://localhost:7474/
+There may be a short delay until the server is ready.
+See /home/zhiyi/ecosys/neo4j-community-3.5.0/logs/neo4j.log for current status.
+./load-in-one-step.sh: line 11: ./show-size.sh: No such file or directory

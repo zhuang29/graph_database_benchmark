@@ -1,7 +1,7 @@
 use graph ldbc
 drop query i_short_4
 
-create query i_short_4(UINT vid) for graph ldbc {
+create query i_short_4(INT vid) for graph ldbc {
     SumAccum<INT> @@hasContent = 0;
     SumAccum<INT> @@isPost = 0;
     SumAccum<INT> @@isComment = 0;

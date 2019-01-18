@@ -1,3 +1,59 @@
+Data Set
+--------------------------------------
+LDBC Social Network Benchmark Dataset(Scale Factor: 1)
+
+Use ldbc_snb_datagen to generate
+
+
+Hardware & Major enviroment
+---------------------------------------
+OS Ubuntu 16.04 LTS
+Memory 256GB
+Threads 56
+Java build 1.8.0_191
+
+Following python modules are required
+sudo apt-get install python-pip python-dev build-essential 
+sudo pip install --upgrade pip 
+sudo pip install --upgrade virtualenv 
+sudo pip install tornado
+sudo pip install neo4j-driver
+sudo pip install requests
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install libssl-dev
+sudo pip install pycurl
+
+
+Install Neo4j
+---------------------------------------
+Neo4j version
+Neo4j 3.5.0 Community Edition downloaded from https://neo4j.com/download-center/#releases
+wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.0-unix.tar.gz
+
+Extract the .tar file under a directory, eg. /path/install/
+tar -xvf artifact.php\?name\=neo4j-community-3.5.0-unix.tar.gz
+
+Start server
+/path/install/neo4j/neo4j-community-3.5.0/bin/neo4j start 
+
+Stop server
+/path/install/neo4j/neo4j-community-3.5.0/bin/neo4j stop
+
+Create/change username and password cypher-shell, then exit
+/path/install/neo4j/neo4j-community-3.5.0/bin/cypher-shell
+user:neo4j
+pass:neo4j
+
+#change password
+neo4j> CALL dbms.changePassword('benchmark')
+
+#exit shell
+neo4j> :exit
+
+#log in again
+cypher-shell -u neo4j -p benchmark
+
+
 Load Data
 ----------------------------------------
 Generate Data
@@ -8,6 +64,8 @@ Preprocess and Load Data
 See descriptions in load_scripts/ directory
 Note: make sure you have the read and write permission to the raw data directory
 
+Record Neo4j loaded data size. Also record it after index creation
+du -sh /path/to/neo4j-community-version/data/database/graph.db
 
 
 Create Index
@@ -29,8 +87,9 @@ CREATE INDEX ON :Post(id);
 CREATE INDEX ON :Tag(name);    
 CREATE INDEX ON :TagClass(name);
 
-Record Neo4j loaded data size before and after index creation
-du -sh /path/to/neo4j-community-version/data/database/graph.db
+To create indexes listed above one by one, execute each statement in cypher-shell
+#create index
+neo4j>CREATE INDEX ON :Message(id);
 
 Record Neo4j index creation time
 Get index creation start time
@@ -38,6 +97,9 @@ grep -n -r 'Index population started' /path/to/neo4j-community-version/logs/debu
 
 Get index creation end time
 grep -n -r 'Index creation finished' /path/to/neo4j-community-version/logs/debug.log
+
+Record Neo4j loaded data size with index
+du -sh /path/to/neo4j-community-version/data/database/graph.db
 
 
 Queries

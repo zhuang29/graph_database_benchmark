@@ -1,10 +1,10 @@
-Loading Data
+Load Data
 ----------------------------------------
-Generating Data
+Generate Data
 Use ldbc_snb_datagen to generate raw data. For more details, go to
 https://github.com/ldbc/ldbc_snb_datagen
 
-Preprocessing and loading
+Preprocess and Load Data
 See descriptions in load_scripts/ directory
 Note: make sure you have the read and write permission to the raw data directory
 

@@ -1,1 +1,1 @@
-./cypher-shell.sh < ./index/index-show.cql
+$NEO4J_HOME/cypher-shell.sh < ./index-show.cql

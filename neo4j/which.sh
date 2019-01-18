@@ -1,2 +1,2 @@
-grep '.db' /home/zhiyi/ecosys/neo4j-community-3.5.0/data/databases/graph.db/logs/debug.log | tail -1
-#du -sh /home/zhiyi/ecosys/neo4j-community-3.5.0/data/databases/graph.db
+grep '.db' $NEO4J_HOME/data/databases/graph.db/logs/debug.log | tail -1
+

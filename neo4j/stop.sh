@@ -1,3 +1,2 @@
+$NEO4J_HOME/bin/neo4j stop
 
-
-/home/zhiyi/ecosys/neo4j-community-3.5.0/bin/neo4j stop

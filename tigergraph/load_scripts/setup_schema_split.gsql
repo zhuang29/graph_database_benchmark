@@ -1,17 +1,17 @@
 /* 
 *--split vertex type given in super class into subclass vertex:
 *  1. split place vertex : into city, country, continent
-*	place(PRIMARY_ID id UINT, id UINT, name STRING, url STRING, types STRING)
+*	place(PRIMARY_ID id INT, id UINT, name STRING, url STRING, types STRING)
 *  into:  
-*	city(PRIMARY_ID id UINT, id UINT, name STRING, url STRING)
-*	country(PRIMARY_ID id UINT, id UINT, name STRING, url STRING)
-*	continent(PRIMARY_ID id UINT, id UINT, name STRING, url STRING)
+*	city(PRIMARY_ID id INT, id UINT, name STRING, url STRING)
+*	country(PRIMARY_ID id INT, id UINT, name STRING, url STRING)
+*	continent(PRIMARY_ID id INT, id UINT, name STRING, url STRING)
 *
 *  2. split organisation vertex: into university, company
-*	organisation(PRIMARY_ID id UINT, id UINT, types STRING, name STRING, url STRING)
+*	organisation(PRIMARY_ID id INT, id UINT, types STRING, name STRING, url STRING)
 *  into:
-*	company(PRIMARY_ID id UINT, id UINT, name STRING, url STRING)
-*	university(PRIMARY_ID id UINT, id UINT, name STRING, url STRING)
+*	company(PRIMARY_ID id INT, id UINT, name STRING, url STRING)
+*	university(PRIMARY_ID id INT, id UINT, name STRING, url STRING)
 *
 *--split edges with vertex given in super class into edges with vertex in sub class
 *  1. split place_isPartOf_place into city_isPartOf_country, country_isPartOf_continent
@@ -49,21 +49,21 @@
 
 drop all
 
-CREATE VERTEX person (PRIMARY_ID id UINT, id UINT, firstName STRING, lastName STRING, gender STRING, birthday STRING, creationDate UINT, locationIP STRING, browserUsed STRING, email set<STRING>, speaks set<STRING>)
-CREATE VERTEX tag(PRIMARY_ID id UINT, id UINT, name STRING, url STRING)
-CREATE VERTEX tagclass(PRIMARY_ID id UINT, id UINT, name STRING,url STRING)
-CREATE VERTEX comments(PRIMARY_ID id UINT, id UINT, creationDate UINT, locationIP STRING, browserUsed STRING, content STRING, length UINT)
-CREATE VERTEX post(PRIMARY_ID id UINT, id UINT, imageFile STRING, creationDate UINT, locationIP STRING, browserUsed STRING, lang STRING, content STRING, length UINT) 
-CREATE VERTEX forum(PRIMARY_ID id UINT, id UINT, title STRING, creationDate UINT)
+CREATE VERTEX person (PRIMARY_ID id INT, id UINT, firstName STRING, lastName STRING, gender STRING, birthday STRING, creationDate UINT, locationIP STRING, browserUsed STRING, email set<STRING>, speaks set<STRING>)
+CREATE VERTEX tag(PRIMARY_ID id INT, id UINT, name STRING, url STRING)
+CREATE VERTEX tagclass(PRIMARY_ID id INT, id UINT, name STRING,url STRING)
+CREATE VERTEX comments(PRIMARY_ID id INT, id UINT, creationDate UINT, locationIP STRING, browserUsed STRING, content STRING, length UINT)
+CREATE VERTEX post(PRIMARY_ID id INT, id UINT, imageFile STRING, creationDate UINT, locationIP STRING, browserUsed STRING, lang STRING, content STRING, length UINT) 
+CREATE VERTEX forum(PRIMARY_ID id INT, id UINT, title STRING, creationDate UINT)
 
-// CREATE VERTEX organisation(PRIMARY_ID id UINT, id UINT, types STRING, name STRING, url STRING)
-CREATE VERTEX company(PRIMARY_ID id UINT, id UINT, types STRING, name STRING, url STRING)
-CREATE VERTEX university(PRIMARY_ID id UINT, id UINT, types STRING, name STRING, url STRING)
+// CREATE VERTEX organisation(PRIMARY_ID id INT, id UINT, types STRING, name STRING, url STRING)
+CREATE VERTEX company(PRIMARY_ID id INT, id UINT, types STRING, name STRING, url STRING)
+CREATE VERTEX university(PRIMARY_ID id INT, id UINT, types STRING, name STRING, url STRING)
  
-//CREATE VERTEX place (PRIMARY_ID id UINT, id UINT, name STRING, url STRING, types STRING) 
-CREATE VERTEX city(PRIMARY_ID id UINT, id UINT, name STRING, url STRING, types STRING)
-CREATE VERTEX country(PRIMARY_ID id UINT, id UINT, name STRING, url STRING, types STRING)
-CREATE VERTEX continent(PRIMARY_ID id UINT, id UINT, name STRING, url STRING, types STRING)
+//CREATE VERTEX place (PRIMARY_ID id INT, id UINT, name STRING, url STRING, types STRING) 
+CREATE VERTEX city(PRIMARY_ID id INT, id UINT, name STRING, url STRING, types STRING)
+CREATE VERTEX country(PRIMARY_ID id INT, id UINT, name STRING, url STRING, types STRING)
+CREATE VERTEX continent(PRIMARY_ID id INT, id UINT, name STRING, url STRING, types STRING)
 
 //CREATE DIRECTED EDGE post_islocatedin_place (FROM messages, TO place) 
 CREATE DIRECTED EDGE post_isLocatedIn_country(FROM post, TO country) WITH REVERSE_EDGE="post_isLocatedIn_country_reverse"
@@ -89,7 +89,7 @@ CREATE DIRECTED EDGE city_isPartOf_country(FROM city, TO country) WITH REVERSE_E
 CREATE DIRECTED EDGE country_isPartOf_continent(FROM country, TO continent) WITH REVERSE_EDGE="country_isPartOf_continent_reverse"
 
 
-CREATE DIRECTED EDGE person_knows_person (FROM person, TO person, creationDate UINT) WITH REVERSE_EDGE="person_knows_person_reverse"
+CREATE DIRECTED EDGE person_knows_person (FROM person, TO person, creationDate INT) WITH REVERSE_EDGE="person_knows_person_reverse"
 CREATE DIRECTED EDGE comments_replyOf_post (FROM comments, TO post) WITH REVERSE_EDGE="comments_replyOf_post_reverse"
 CREATE DIRECTED EDGE comments_replyOf_comments (FROM comments, TO comments) WITH REVERSE_EDGE="comments_replyOf_comments_reverse"
 CREATE DIRECTED EDGE post_hasCreator_person (FROM post, TO person) WITH REVERSE_EDGE="post_hasCreator_person_reverse"
@@ -97,12 +97,12 @@ CREATE DIRECTED EDGE post_hasTag_tag (FROM post, TO tag) WITH REVERSE_EDGE="post
 CREATE DIRECTED EDGE comments_hasCreator_person (FROM comments, TO person) WITH REVERSE_EDGE="comments_hasCreator_person_reverse"
 CREATE DIRECTED EDGE comments_hasTag_tag (FROM comments, TO tag) WITH REVERSE_EDGE="comments_hasTag_tag_reverse"
 CREATE DIRECTED EDGE forum_containerOf_post (FROM forum, TO post) WITH REVERSE_EDGE="forum_containerOf_post_reverse"
-CREATE DIRECTED EDGE forum_hasMember_person (FROM forum, TO person, joinDate UINT) WITH REVERSE_EDGE="forum_hasMember_person_reverse"
+CREATE DIRECTED EDGE forum_hasMember_person (FROM forum, TO person, joinDate INT) WITH REVERSE_EDGE="forum_hasMember_person_reverse"
 CREATE DIRECTED EDGE forum_hasModerator_person (FROM forum, TO person) WITH REVERSE_EDGE="forum_hasModerator_person_reverse"
 CREATE DIRECTED EDGE forum_hasTag_tag (FROM forum, TO tag) WITH REVERSE_EDGE="forum_hasTag_tag_reverse"
 CREATE DIRECTED EDGE person_hasInterest_tag (FROM person, TO tag) WITH REVERSE_EDGE="person_hasInterest_tag_reverse"
-CREATE DIRECTED EDGE person_likes_comments (FROM person, TO comments, creationDate UINT) WITH REVERSE_EDGE="person_likes_comments_reverse"
-CREATE DIRECTED EDGE person_likes_post (FROM person, TO post, creationDate UINT) WITH REVERSE_EDGE="person_likes_post_reverse"
+CREATE DIRECTED EDGE person_likes_comments (FROM person, TO comments, creationDate INT) WITH REVERSE_EDGE="person_likes_comments_reverse"
+CREATE DIRECTED EDGE person_likes_post (FROM person, TO post, creationDate INT) WITH REVERSE_EDGE="person_likes_post_reverse"
 CREATE DIRECTED EDGE tag_hasType_tagclass (FROM tag, TO tagclass) WITH REVERSE_EDGE="tag_hasType_tagclass_reverse"
 CREATE DIRECTED EDGE tagclass_isSubclassOf_tagclass (FROM tagclass, TO tagclass) WITH REVERSE_EDGE="tagclass_isSubclassOf_tagclass_reverse"
 CREATE GRAPH ldbc (*)

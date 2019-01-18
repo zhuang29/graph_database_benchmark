@@ -1,3 +1,6 @@
+path.sh
+#set path to raw data directory
+
 convert_data.sh
 #1. convert city/country/continent to City/Country/Continent
 	convert company/university to Company/University
@@ -32,9 +35,9 @@ load_data_split.sh
 #load converted and splited data into Tigergraph
 
 
-one_step_load.sh
+load_in_one_step.sh
 #execute convert_date.sh,  setup_schema.gsql, load_data.sh one by one
 
 
-one_step_load_split.sh
+load_in_one_step_split.sh
 #execute convert_data.sh, split_data.sh, setup_schema_split.gsql, load_data_splited one by one

@@ -1,0 +1,833 @@
+/home/zhiyi/raw/snb/tigergraph/social_network_10
+------------------------------completed set path----------------------------
+------------------------------completed convert raw data----------------------------
+Dropping all, about 1 minute ...
+Abort all active loading jobs 
+[ABORT_SUCCESS] No active Loading Job to abort.
+
+Shutdown restpp gse gpe ...
+Graph store /home/tigergraph/tigergraph/gstore/0/ has been cleared!
+Everything is dropped.
+The vertex type person is created.
+The vertex type tag is created.
+The vertex type tagclass is created.
+The vertex type comments is created.
+The vertex type post is created.
+The vertex type forum is created.
+The vertex type organisation is created.
+The vertex type place is created.
+The edge type post_isLocatedIn_place is created.
+The reverse edge type post_isLocatedIn_place_reverse is created.
+The edge type comments_isLocatedIn_place is created.
+The reverse edge type comments_isLocatedIn_place_reverse is created.
+The edge type organisation_isLocatedIn_place is created.
+The reverse edge type university_isLocatedIn_place_reverse is created.
+The edge type person_isLocatedIn_place is created.
+The reverse edge type person_isLocatedIn_place_reverse is created.
+The edge type person_studyAt_organisation is created.
+The reverse edge type person_studyAt_organisation_reverse is created.
+The edge type person_workAt_organisation is created.
+The reverse edge type person_workAt_organisation_reverse is created.
+The edge type place_isPartOf_place is created.
+The reverse edge type place_isPartOf_place_reverse is created.
+The edge type person_knows_person is created.
+The edge type comments_replyOf_post is created.
+The reverse edge type comments_replyOf_post_reverse is created.
+The edge type comments_replyOf_comments is created.
+The reverse edge type comments_replyOf_comments_reverse is created.
+The edge type post_hasCreator_person is created.
+The reverse edge type post_hasCreator_person_reverse is created.
+The edge type post_hasTag_tag is created.
+The reverse edge type post_hasTag_tag_reverse is created.
+The edge type comments_hasCreator_person is created.
+The reverse edge type comments_hasCreator_person_reverse is created.
+The edge type comments_hasTag_tag is created.
+The reverse edge type comments_hasTag_tag_reverse is created.
+The edge type forum_containerOf_post is created.
+The reverse edge type forum_containerOf_post_reverse is created.
+The edge type forum_hasMember_person is created.
+The reverse edge type forum_hasMember_person_reverse is created.
+The edge type forum_hasModerator_person is created.
+The reverse edge type forum_hasModerator_person_reverse is created.
+The edge type forum_hasTag_tag is created.
+The reverse edge type forum_hasTag_tag_reverse is created.
+The edge type person_hasInterest_tag is created.
+The reverse edge type person_hasInterest_tag_reverse is created.
+The edge type person_likes_comments is created.
+The reverse edge type person_likes_comments_reverse is created.
+The edge type person_likes_post is created.
+The reverse edge type person_likes_post_reverse is created.
+The edge type tag_hasType_tagclass is created.
+The reverse edge type tag_hasType_tagclass_reverse is created.
+The edge type tagclass_isSubclassOf_tagclass is created.
+The reverse edge type tagclass_isSubclassOf_tagclass_reverse is created.
+
+Restarting gse gpe restpp ...
+
+Finish restarting services in 14.662 seconds!
+The graph ldbc is created.
+Using graph 'ldbc'
+The job load_ldbc_edge is created.
+The job load_ldbc_person_knows_person is created.
+The job load_ldbc_comments_replyOf_post is created.
+The job load_ldbc_comments_replyOf_comments is created.
+The job load_ldbc_post_hasCreator_person is created.
+The job load_ldbc_post_hasTag_tag is created.
+The job load_ldbc_comments_hasCreator_person is created.
+The job load_ldbc_post_isLocatedIn_place is created.
+The job load_ldbc_comments_hasTag_tag is created.
+The job load_ldbc_comments_isLocatedIn_place is created.
+The job load_ldbc_forum_containerOf_post is created.
+The job load_ldbc_forum_hasMember_person is created.
+The job load_ldbc_forum_hasModerator_person is created.
+The job load_ldbc_forum_hasTag_tag is created.
+The job load_ldbc_organisation_isLocatedIn_place is created.
+The job load_ldbc_person_hasInterest_tag is created.
+The job load_ldbc_person_isLocatedIn_place is created.
+The job load_ldbc_person_likes_comments is created.
+The job load_ldbc_person_likes_post is created.
+The job load_ldbc_person_studyAt_organisation is created.
+The job load_ldbc_person_workAt_organisation is created.
+The job load_ldbc_place_isPartOf_place is created.
+The job load_ldbc_tag_hasType_tagclass is created.
+The job load_ldbc_tagclass_isSubclassOf_tagclass is created.
+------------------------------completed setup schema---------------------------------------
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_edge, jobid: ldbc_m1.1547795771844
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795771844.log'
+
+Job "ldbc_m1.1547795771844" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 8 )
+[2A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 8 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv
+  [=============                                                                                       ] 13%, 686 kl/s
+[4A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 8 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv
+[2K  [=============================================                                                       ] 45%, 1059 kl/s
+[4A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 8 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv
+[2K  [=======================================================================================             ] 87%, 1335 kl/s
+[4A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 8 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_0_0.csv
+[2K  [=================================================================================================== ] 99%, 462 kl/s
+  [LOADED]
+  +-------------------------------------------------------------------------------------------------------------+
+  |                                                         FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv |       21865476 |   1262 kl/s |    17.33 s|
+  +-------------------------------------------------------------------------------------------------------------+
+[9A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[RUNNING] m1 ( Finished: 5 / Total: 8 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/post_0_0.csv
+[2K  [====================                                                                                ] 20%, 810 kl/s
+[2K  [LOADED]
+[2K  +-----------------------------------------------------------------------------------------------------------------+
+[2K  |                                                             FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/place_0_0.csv |           1461 |      1 kl/s |     1.00 s|
+[2K  |      /home/zhiyi/raw/snb/tigergraph/social_network_10/person_0_0.csv |          65646 |     64 kl/s |     1.02 s|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/organisation_0_0.csv |           7956 |      7 kl/s |     1.00 s|
+  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_0_0.csv |         595454 |    274 kl/s |     2.17 s|
+  |    /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv |       21865476 |   1262 kl/s |    17.33 s|
+  +-----------------------------------------------------------------------------------------------------------------+
+[13A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[RUNNING] m1 ( Finished: 6 / Total: 8 )
+[2K  [LOADED]
+[2K  +-----------------------------------------------------------------------------------------------------------------+
+[2K  |                                                             FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/place_0_0.csv |           1461 |      1 kl/s |     1.00 s|
+[2K  |      /home/zhiyi/raw/snb/tigergraph/social_network_10/person_0_0.csv |          65646 |     64 kl/s |     1.02 s|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/organisation_0_0.csv |           7956 |      7 kl/s |     1.00 s|
+[2K  |        /home/zhiyi/raw/snb/tigergraph/social_network_10/post_0_0.csv |        7435697 |   1219 kl/s |     6.10 s|
+[2K  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_0_0.csv |         595454 |    274 kl/s |     2.17 s|
+[2K  |    /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv |       21865476 |   1262 kl/s |    17.33 s|
+[2K  +-----------------------------------------------------------------------------------------------------------------+
+[2K
+[13A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[RUNNING] m1 ( Finished: 8 / Total: 8 )
+[2K  [LOADED]
+[2K  +-----------------------------------------------------------------------------------------------------------------+
+[2K  |                                                             FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |    /home/zhiyi/raw/snb/tigergraph/social_network_10/tagclass_0_0.csv |             72 |      71 l/s |     1.00 s|
+[2K  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/place_0_0.csv |           1461 |      1 kl/s |     1.00 s|
+[2K  |      /home/zhiyi/raw/snb/tigergraph/social_network_10/person_0_0.csv |          65646 |     64 kl/s |     1.02 s|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/organisation_0_0.csv |           7956 |      7 kl/s |     1.00 s|
+[2K  |        /home/zhiyi/raw/snb/tigergraph/social_network_10/post_0_0.csv |        7435697 |   1219 kl/s |     6.10 s|
+[2K  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_0_0.csv |         595454 |    274 kl/s |     2.17 s|
+[2K  |         /home/zhiyi/raw/snb/tigergraph/social_network_10/tag_0_0.csv |          16081 |     16 kl/s |     1.01 s|
+[2K  |    /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv |       21865476 |   1262 kl/s |    17.33 s|
+  +-----------------------------------------------------------------------------------------------------------------+
+[14A[2KJob "ldbc_m1.1547795771844" loading status
+[2K[FINISHED] m1 ( Finished: 8 / Total: 8 )
+[2K  [LOADED]
+[2K  +-----------------------------------------------------------------------------------------------------------------+
+[2K  |                                                             FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |    /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_0_0.csv |       21865476 |   1262 kl/s |    17.33 s|
+[2K  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_0_0.csv |         595454 |    274 kl/s |     2.17 s|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/organisation_0_0.csv |           7956 |      7 kl/s |     1.00 s|
+[2K  |      /home/zhiyi/raw/snb/tigergraph/social_network_10/person_0_0.csv |          65646 |     64 kl/s |     1.02 s|
+[2K  |       /home/zhiyi/raw/snb/tigergraph/social_network_10/place_0_0.csv |           1461 |      1 kl/s |     1.00 s|
+[2K  |        /home/zhiyi/raw/snb/tigergraph/social_network_10/post_0_0.csv |        7435697 |   1219 kl/s |     6.10 s|
+[2K  |         /home/zhiyi/raw/snb/tigergraph/social_network_10/tag_0_0.csv |          16081 |     16 kl/s |     1.01 s|
+[2K  |    /home/zhiyi/raw/snb/tigergraph/social_network_10/tagclass_0_0.csv |             72 |      71 l/s |     1.00 s|
+[2K  +-----------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_person_knows_person, jobid: ldbc_m1.1547795812496
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795812496.log'
+
+Job "ldbc_m1.1547795812496" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795812496" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +------------------------------------------------------------------------------------------------------------------------+
+  |                                                                    FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_knows_person_0_0.csv |        1938517 |    543 kl/s |     3.57 s|
+  +------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547795812496" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                    FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_knows_person_0_0.csv |        1938517 |    543 kl/s |     3.57 s|
+[2K  +------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_comments_replyOf_post, jobid: ldbc_m1.1547795823053
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795823053.log'
+
+Job "ldbc_m1.1547795823053" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795823053" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_post_0_0.csv
+  [===========================                                                                         ] 27%, 713 kl/s
+[4A[2KJob "ldbc_m1.1547795823053" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_post_0_0.csv
+[2K  [=======================================================================                             ] 71%, 840 kl/s
+[4A[2KJob "ldbc_m1.1547795823053" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +--------------------------------------------------------------------------------------------------------------------------+
+  |                                                                      FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_post_0_0.csv |       10776103 |    781 kl/s |    13.78 s|
+  +--------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547795823053" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +--------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                      FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_post_0_0.csv |       10776103 |    781 kl/s |    13.78 s|
+[2K  +--------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_comments_replyOf_comments, jobid: ldbc_m1.1547795843572
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795843572.log'
+
+Job "ldbc_m1.1547795843572" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795843572" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_comments_0_0.csv
+  [========================                                                                            ] 24%, 638 kl/s
+[4A[2KJob "ldbc_m1.1547795843572" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_comments_0_0.csv
+[2K  [========================================================                                            ] 56%, 671 kl/s
+[4A[2KJob "ldbc_m1.1547795843572" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_comments_0_0.csv
+[2K  [====================================================================================                ] 84%, 657 kl/s
+[4A[2KJob "ldbc_m1.1547795843572" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                          FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_comments_0_0.csv |       11089374 |    644 kl/s |    17.20 s|
+  +------------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547795843572" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +------------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                          FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_replyOf_comments_0_0.csv |       11089374 |    644 kl/s |    17.20 s|
+[2K  +------------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_post_hasCreator_person, jobid: ldbc_m1.1547795869075
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795869075.log'
+
+Job "ldbc_m1.1547795869075" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795869075" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/post_hasCreator_person_0_0.csv
+  [=======================================                                                             ] 39%, 689 kl/s
+[4A[2KJob "ldbc_m1.1547795869075" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/post_hasCreator_person_0_0.csv
+[2K  [=======================================================================================             ] 87%, 705 kl/s
+[4A[2KJob "ldbc_m1.1547795869075" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/post_hasCreator_person_0_0.csv |        7435697 |    670 kl/s |    11.10 s|
+  +---------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547795869075" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/post_hasCreator_person_0_0.csv |        7435697 |    670 kl/s |    11.10 s|
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_post_hasTag_tag, jobid: ldbc_m1.1547795889572
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795889572.log'
+
+Job "ldbc_m1.1547795889572" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795889572" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/post_hasTag_tag_0_0.csv
+  [===============================================                                                     ] 47%, 860 kl/s
+[4A[2KJob "ldbc_m1.1547795889572" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/post_hasTag_tag_0_0.csv
+[2K  [=================================================================================================== ] 99%, 880 kl/s
+[4A[2KJob "ldbc_m1.1547795889572" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +--------------------------------------------------------------------------------------------------------------------+
+  |                                                                FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/post_hasTag_tag_0_0.csv |        7599702 |    815 kl/s |     9.32 s|
+  +--------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_comments_hasCreator_person, jobid: ldbc_m1.1547795905062
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795905062.log'
+
+Job "ldbc_m1.1547795905062" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv
+  [============                                                                                        ] 12%, 673 kl/s
+[4A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv
+[2K  [==============================                                                                      ] 30%, 715 kl/s
+[4A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv
+[2K  [===============================================                                                     ] 47%, 724 kl/s
+[4A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv
+[2K  [============================================================                                        ] 60%, 690 kl/s
+[4A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv
+[2K  [========================================================================                            ] 72%, 660 kl/s
+[4A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv
+[2K  [=======================================================================================             ] 87%, 654 kl/s
+[4A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv
+[2K  [=================================================================================================== ] 99%, 647 kl/s
+[4A[2KJob "ldbc_m1.1547795905062" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                           FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasCreator_person_0_0.csv |       21865476 |    635 kl/s |    34.41 s|
+  +-------------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_post_isLocatedIn_place, jobid: ldbc_m1.1547795945612
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795945612.log'
+
+Job "ldbc_m1.1547795945612" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795945612" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/post_isLocatedIn_place_0_0.csv
+  [======================================                                                              ] 38%, 689 kl/s
+[4A[2KJob "ldbc_m1.1547795945612" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/post_isLocatedIn_place_0_0.csv
+[2K  [========================================================================================            ] 88%, 713 kl/s
+[4A[2KJob "ldbc_m1.1547795945612" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/post_isLocatedIn_place_0_0.csv |        7435697 |    665 kl/s |    11.17 s|
+  +---------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547795945612" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/post_isLocatedIn_place_0_0.csv |        7435697 |    665 kl/s |    11.17 s|
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_comments_hasTag_tag, jobid: ldbc_m1.1547795966111
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547795966111.log'
+
+Job "ldbc_m1.1547795966111" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv
+  [=============                                                                                       ] 13%, 882 kl/s
+[4A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv
+[2K  [==============================                                                                      ] 30%, 945 kl/s
+[4A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv
+[2K  [============================================                                                        ] 44%, 905 kl/s
+[4A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv
+[2K  [=============================================================                                       ] 61%, 919 kl/s
+[4A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv
+[2K  [=========================================================================                           ] 73%, 870 kl/s
+[4A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv
+[2K  [=====================================================================================               ] 85%, 842 kl/s
+[4A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv
+[2K  [=================================================================================================== ] 99%, 837 kl/s
+[4A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +------------------------------------------------------------------------------------------------------------------------+
+  |                                                                    FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv |       28740195 |    821 kl/s |    34.97 s|
+  +------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547795966111" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                    FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_hasTag_tag_0_0.csv |       28740195 |    821 kl/s |    34.97 s|
+[2K  +------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_comments_isLocatedIn_place, jobid: ldbc_m1.1547796011682
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796011682.log'
+
+Job "ldbc_m1.1547796011682" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv
+  [=============                                                                                       ] 13%, 705 kl/s
+[4A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv
+[2K  [=============================                                                                       ] 29%, 712 kl/s
+[4A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv
+[2K  [===============================================                                                     ] 47%, 727 kl/s
+[4A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv
+[2K  [==============================================================                                      ] 62%, 715 kl/s
+[4A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv
+[2K  [==============================================================================                      ] 78%, 708 kl/s
+[4A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv
+[2K  [=============================================================================================       ] 93%, 701 kl/s
+[4A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                           FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv |       21865476 |    692 kl/s |    31.59 s|
+  +-------------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796011682" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-------------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                           FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/comments_isLocatedIn_place_0_0.csv |       21865476 |    692 kl/s |    31.59 s|
+[2K  +-------------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_forum_containerOf_post, jobid: ldbc_m1.1547796052236
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796052236.log'
+
+Job "ldbc_m1.1547796052236" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796052236" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_containerOf_post_0_0.csv
+  [======================================                                                              ] 38%, 688 kl/s
+[4A[2KJob "ldbc_m1.1547796052236" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_containerOf_post_0_0.csv
+[2K  [==========================================================================================          ] 90%, 727 kl/s
+[4A[2KJob "ldbc_m1.1547796052236" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/forum_containerOf_post_0_0.csv |        7435697 |    687 kl/s |    10.82 s|
+  +---------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796052236" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/forum_containerOf_post_0_0.csv |        7435697 |    687 kl/s |    10.82 s|
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_forum_hasMember_person, jobid: ldbc_m1.1547796072737
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796072737.log'
+
+Job "ldbc_m1.1547796072737" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796072737" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasMember_person_0_0.csv
+  [============================                                                                        ] 28%, 1155 kl/s
+[4A[2KJob "ldbc_m1.1547796072737" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasMember_person_0_0.csv
+[2K  [============================================================                                        ] 60%, 1131 kl/s
+[4A[2KJob "ldbc_m1.1547796072737" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasMember_person_0_0.csv
+[2K  [==================================================================================================  ] 98%, 1184 kl/s
+[4A[2KJob "ldbc_m1.1547796072737" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasMember_person_0_0.csv |       17168615 |   1120 kl/s |    15.33 s|
+  +---------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796072737" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasMember_person_0_0.csv |       17168615 |   1120 kl/s |    15.33 s|
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_forum_hasModerator_person, jobid: ldbc_m1.1547796098260
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796098260.log'
+
+Job "ldbc_m1.1547796098260" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796098260" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                          FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasModerator_person_0_0.csv |         595454 |    332 kl/s |     1.79 s|
+  +------------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796098260" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +------------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                          FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasModerator_person_0_0.csv |         595454 |    332 kl/s |     1.79 s|
+[2K  +------------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_forum_hasTag_tag, jobid: ldbc_m1.1547796108778
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796108778.log'
+
+Job "ldbc_m1.1547796108778" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796108778" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasTag_tag_0_0.csv
+  [=================================================================================================== ] 99%, 519 kl/s
+[4A[2KJob "ldbc_m1.1547796108778" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------+
+  |                                                                 FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/forum_hasTag_tag_0_0.csv |        2065320 |    426 kl/s |     4.84 s|
+  +---------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_organisation_isLocatedIn_place, jobid: ldbc_m1.1547796119306
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796119306.log'
+
+Job "ldbc_m1.1547796119306" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796119306" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                               FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/organisation_isLocatedIn_place_0_0.csv |           7956 |      7 kl/s |     1.00 s|
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796119306" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-----------------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                               FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/organisation_isLocatedIn_place_0_0.csv |           7956 |      7 kl/s |     1.00 s|
+[2K  +-----------------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_person_hasInterest_tag, jobid: ldbc_m1.1547796129840
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796129840.log'
+
+Job "ldbc_m1.1547796129840" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796129840" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +---------------------------------------------------------------------------------------------------------------------------+
+  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_hasInterest_tag_0_0.csv |        1535512 |    617 kl/s |     2.49 s|
+  +---------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796129840" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                       FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_hasInterest_tag_0_0.csv |        1535512 |    617 kl/s |     2.49 s|
+[2K  +---------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_person_isLocatedIn_place, jobid: ldbc_m1.1547796140378
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796140378.log'
+
+Job "ldbc_m1.1547796140378" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796140378" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +-----------------------------------------------------------------------------------------------------------------------------+
+  |                                                                         FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_isLocatedIn_place_0_0.csv |          65646 |     65 kl/s |     1.01 s|
+  +-----------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796140378" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-----------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                         FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_isLocatedIn_place_0_0.csv |          65646 |     65 kl/s |     1.01 s|
+[2K  +-----------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_person_likes_comments, jobid: ldbc_m1.1547796150873
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796150873.log'
+
+Job "ldbc_m1.1547796150873" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796150873" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_comments_0_0.csv
+  [==========================                                                                          ] 26%, 1196 kl/s
+[4A[2KJob "ldbc_m1.1547796150873" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_comments_0_0.csv
+[2K  [================================================================                                    ] 64%, 1381 kl/s
+[4A[2KJob "ldbc_m1.1547796150873" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_comments_0_0.csv
+[2K  [==================================================================================================  ] 98%, 1373 kl/s
+[4A[2KJob "ldbc_m1.1547796150873" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +--------------------------------------------------------------------------------------------------------------------------+
+  |                                                                      FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_comments_0_0.csv |       19949361 |   1299 kl/s |    15.35 s|
+  +--------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796150873" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +--------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                      FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_comments_0_0.csv |       19949361 |   1299 kl/s |    15.35 s|
+[2K  +--------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_person_likes_post, jobid: ldbc_m1.1547796176350
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796176350.log'
+
+Job "ldbc_m1.1547796176350" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796176350" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_post_0_0.csv
+  [=============================================                                                       ] 45%, 1007 kl/s
+[4A[2KJob "ldbc_m1.1547796176350" loading status
+[2K[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2K  [LOADING] /home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_post_0_0.csv
+[2K  [=================================================================================================== ] 99%, 970 kl/s
+[4A[2KJob "ldbc_m1.1547796176350" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +----------------------------------------------------------------------------------------------------------------------+
+  |                                                                  FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_post_0_0.csv |        8839876 |    890 kl/s |     9.93 s|
+  +----------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796176350" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +----------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                  FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_likes_post_0_0.csv |        8839876 |    890 kl/s |     9.93 s|
+[2K  +----------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_person_studyAt_organisation, jobid: ldbc_m1.1547796196868
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796196868.log'
+
+Job "ldbc_m1.1547796196868" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796196868" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +--------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                            FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_studyAt_organisation_0_0.csv |          52633 |     52 kl/s |     1.00 s|
+  +--------------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796196868" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +--------------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                            FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_studyAt_organisation_0_0.csv |          52633 |     52 kl/s |     1.00 s|
+[2K  +--------------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_person_workAt_organisation, jobid: ldbc_m1.1547796207440
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796207440.log'
+
+Job "ldbc_m1.1547796207440" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796207440" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +-------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                           FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_workAt_organisation_0_0.csv |         143554 |    142 kl/s |     1.01 s|
+  +-------------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796207440" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-------------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                           FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/person_workAt_organisation_0_0.csv |         143554 |    142 kl/s |     1.01 s|
+[2K  +-------------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_place_isPartOf_place, jobid: ldbc_m1.1547796217924
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796217924.log'
+
+Job "ldbc_m1.1547796217924" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796217924" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +-------------------------------------------------------------------------------------------------------------------------+
+  |                                                                     FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/place_isPartOf_place_0_0.csv |           1455 |      1 kl/s |     1.00 s|
+  +-------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796217924" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                     FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/place_isPartOf_place_0_0.csv |           1455 |      1 kl/s |     1.00 s|
+[2K  +-------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_tag_hasType_tagclass, jobid: ldbc_m1.1547796228387
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796228387.log'
+
+Job "ldbc_m1.1547796228387" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796228387" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +-------------------------------------------------------------------------------------------------------------------------+
+  |                                                                     FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/tag_hasType_tagclass_0_0.csv |          16081 |      6 kl/s |     2.48 s|
+  +-------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796228387" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                     FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/tag_hasType_tagclass_0_0.csv |          16081 |      6 kl/s |     2.48 s|
+[2K  +-------------------------------------------------------------------------------------------------------------------------+
+[Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
+[Tip: Manage loading jobs with "ABORT/RESUME LOADING JOB jobid"]
+Starting the following job, i.e.
+  JobName: load_ldbc_tagclass_isSubclassOf_tagclass, jobid: ldbc_m1.1547796238939
+  Loading log: '/home/tigergraph/tigergraph/logs/restpp/restpp_loader_logs/ldbc/ldbc_m1.1547796238939.log'
+
+Job "ldbc_m1.1547796238939" loading status
+[RUNNING] m1 ( Finished: 0 / Total: 1 )
+[2A[2KJob "ldbc_m1.1547796238939" loading status
+[2K[RUNNING] m1 ( Finished: 1 / Total: 1 )
+  [LOADED]
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+  |                                                                               FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+  |/home/zhiyi/raw/snb/tigergraph/social_network_10/tagclass_isSubclassOf_tagclass_0_0.csv |             71 |      70 l/s |     1.00 s|
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+[7A[2KJob "ldbc_m1.1547796238939" loading status
+[2K[FINISHED] m1 ( Finished: 1 / Total: 1 )
+[2K  [LOADED]
+[2K  +-----------------------------------------------------------------------------------------------------------------------------------+
+[2K  |                                                                               FILENAME |   LOADED LINES |   AVG SPEED |   DURATION|
+[2K  |/home/zhiyi/raw/snb/tigergraph/social_network_10/tagclass_isSubclassOf_tagclass_0_0.csv |             71 |      70 l/s |     1.00 s|
+[2K  +-----------------------------------------------------------------------------------------------------------------------------------+
+477896 /home/zhiyi/raw/snb/tigergraph/social_network_10
+10015	/home/tigergraph/tigergraph/gstore/
+------------------------------completed load data---------------------------------------

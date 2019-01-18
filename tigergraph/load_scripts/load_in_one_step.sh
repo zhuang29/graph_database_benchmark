@@ -7,7 +7,7 @@ echo "------------------------------completed set path--------------------------
 bash convert_data.sh
 echo "------------------------------completed convert raw data----------------------------"
 
-gsql setup_schema_simple.gsql
+gsql setup_schema.gsql
 echo "------------------------------completed setup schema---------------------------------------"
 
 t0=$(date +%s%N)

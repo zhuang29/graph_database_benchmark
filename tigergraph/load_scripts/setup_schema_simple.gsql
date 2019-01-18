@@ -1,13 +1,13 @@
 drop all
 
-CREATE VERTEX person (PRIMARY_ID id UINT, id UINT, firstName STRING, lastName STRING, gender STRING, birthday STRING, creationDate UINT, locationIP STRING, browserUsed STRING, email set<STRING>, speaks set<STRING>)
-CREATE VERTEX tag (PRIMARY_ID id UINT, id UINT, name STRING, url STRING)
-CREATE VERTEX tagclass(PRIMARY_ID id UINT, id UINT, name STRING,url STRING)
-CREATE VERTEX comments (PRIMARY_ID id UINT, id UINT, creationDate UINT, locationIP STRING, browserUsed STRING, content STRING, length UINT)
-CREATE VERTEX post (PRIMARY_ID id UINT, id UINT, imageFile STRING, creationDate UINT, locationIP STRING, browserUsed STRING, lang STRING, content STRING, length UINT) 
-CREATE VERTEX forum (PRIMARY_ID id UINT, id UINT, title STRING, creationDate UINT)
-CREATE VERTEX organisation(PRIMARY_ID id UINT, id UINT, types STRING, name STRING, url STRING) 
-CREATE VERTEX place (PRIMARY_ID id UINT, id UINT, name STRING, url STRING, types STRING) 
+CREATE VERTEX person (PRIMARY_ID id INT, id UINT, firstName STRING, lastName STRING, gender STRING, birthday STRING, creationDate UINT, locationIP STRING, browserUsed STRING, email set<STRING>, speaks set<STRING>)
+CREATE VERTEX tag (PRIMARY_ID id INT, id UINT, name STRING, url STRING)
+CREATE VERTEX tagclass(PRIMARY_ID id INT, id UINT, name STRING,url STRING)
+CREATE VERTEX comments (PRIMARY_ID id INT, id UINT, creationDate UINT, locationIP STRING, browserUsed STRING, content STRING, length UINT)
+CREATE VERTEX post (PRIMARY_ID id INT, id UINT, imageFile STRING, creationDate UINT, locationIP STRING, browserUsed STRING, lang STRING, content STRING, length UINT) 
+CREATE VERTEX forum (PRIMARY_ID id INT, id UINT, title STRING, creationDate UINT)
+CREATE VERTEX organisation(PRIMARY_ID id INT, id UINT, types STRING, name STRING, url STRING) 
+CREATE VERTEX place (PRIMARY_ID id INT, id UINT, name STRING, url STRING, types STRING) 
 
 
 
@@ -20,7 +20,7 @@ CREATE DIRECTED EDGE person_workAt_organisation (FROM person, TO organisation, w
 CREATE DIRECTED EDGE place_isPartOf_place (FROM place, TO place) WITH REVERSE_EDGE="place_isPartOf_place_reverse"
 
 
-CREATE UNDIRECTED EDGE person_knows_person (FROM person, TO person, creationDate UINT)
+CREATE UNDIRECTED EDGE person_knows_person (FROM person, TO person, creationDate INT)
 CREATE DIRECTED EDGE comments_replyOf_post (FROM comments, TO post) 
 CREATE DIRECTED EDGE comments_replyOf_comments (FROM comments, TO comments) 
 CREATE DIRECTED EDGE post_hasCreator_person (FROM post, TO person) 
@@ -28,12 +28,12 @@ CREATE DIRECTED EDGE post_hasTag_tag (FROM post, TO tag)
 CREATE DIRECTED EDGE comments_hasCreator_person (FROM comments, TO person) 
 CREATE DIRECTED EDGE comments_hasTag_tag (FROM comments, TO tag) 
 CREATE DIRECTED EDGE forum_containerOf_post (FROM forum, TO post) 
-CREATE DIRECTED EDGE forum_hasMember_person (FROM forum, TO person, joinDate UINT) 
+CREATE DIRECTED EDGE forum_hasMember_person (FROM forum, TO person, joinDate INT) 
 CREATE DIRECTED EDGE forum_hasModerator_person (FROM forum, TO person) 
 CREATE DIRECTED EDGE forum_hasTag_tag (FROM forum, TO tag) 
 CREATE DIRECTED EDGE person_hasInterest_tag (FROM person, TO tag) 
-CREATE DIRECTED EDGE person_likes_comments (FROM person, TO comments, creationDate UINT) 
-CREATE DIRECTED EDGE person_likes_post (FROM person, TO post, creationDate UINT) 
+CREATE DIRECTED EDGE person_likes_comments (FROM person, TO comments, creationDate INT) 
+CREATE DIRECTED EDGE person_likes_post (FROM person, TO post, creationDate INT) 
 CREATE DIRECTED EDGE tag_hasType_tagclass (FROM tag, TO tagclass) 
 CREATE DIRECTED EDGE tagclass_isSubclassOf_tagclass (FROM tagclass, TO tagclass) 
 CREATE GRAPH ldbc (*)

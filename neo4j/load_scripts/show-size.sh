@@ -1,1 +1,2 @@
-du -sm $NEO4J_DB_DIR
+. ./path.sh
+du -sb $NEO4J_DB_DIR

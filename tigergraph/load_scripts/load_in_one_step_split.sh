@@ -16,6 +16,6 @@ tn=$(date +%s%N)
 t=$((($tn - $t0)/1000000))
 echo $t $RAW_DATA_DIR
 echo $t $RAW_DATA_DIR >> ./loading_split.out
-du -sm /home/tigergraph/tigergraph/gstore/
-du -sm /home/tigergraph/tigergraph/gstore/ >> ./loading_split.out
+du -sb /home/tigergraph/tigergraph/gstore/
+du -sb /home/tigergraph/tigergraph/gstore/ >> ./loading_split.out
 echo "------------------------------completed load data---------------------------------------"

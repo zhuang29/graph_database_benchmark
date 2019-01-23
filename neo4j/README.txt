@@ -101,9 +101,11 @@ grep -n -r 'Index population started' $NEO4J_HOME/logs/debug.log
 Get index creation end time
 grep -n -r 'Index creation finished' $NEO4J_HOME/logs/debug.log
 
-Record Neo4j loaded data size with index
+Record Neo4j index size
 du -sb $NEO4j_HOME/data/database/graph.db/schema/index/
 
+Create indexes for all vertexes by
+./cypher-shell ./load_script/index/index-ldbc.cql
 
 Queries
 ----------------------------------------

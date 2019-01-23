@@ -33,14 +33,17 @@ wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.0-unix.tar.gz
 Extract the .tar file under a directory, eg. /path/install/
 tar -xvf artifact.php\?name\=neo4j-community-3.5.0-unix.tar.gz
 
+Set enviroment variable $NEO4J_HOME to NEO4J install directory in path_neo4j.sh
+. ./path_neo4j.sh
+
 Start server
-/path/install/neo4j/neo4j-community-3.5.0/bin/neo4j start 
+$NEO4J_HOME/bin/neo4j start 
 
 Stop server
-/path/install/neo4j/neo4j-community-3.5.0/bin/neo4j stop
+$NEO4J_HOME/bin/neo4j stop
 
 Create/change username and password cypher-shell, then exit
-/path/install/neo4j/neo4j-community-3.5.0/bin/cypher-shell
+$NEO4J_HOME/bin/cypher-shell
 user:neo4j
 pass:neo4j
 
@@ -64,8 +67,8 @@ Preprocess and Load Data
 See descriptions in load_scripts/ directory
 Note: make sure you have the read and write permission to the raw data directory
 
-Record Neo4j loaded data size. Also record it after index creation
-du -sh /path/to/neo4j-community-version/data/database/graph.db
+Record Neo4j loaded data size
+du -sb $NEO4j_HOME/data/database/graph.db
 
 
 Create Index
@@ -93,13 +96,13 @@ neo4j>CREATE INDEX ON :Message(id);
 
 Record Neo4j index creation time
 Get index creation start time
-grep -n -r 'Index population started' /path/to/neo4j-community-version/logs/debug.log
+grep -n -r 'Index population started' $NEO4J_HOME/logs/debug.log
 
 Get index creation end time
-grep -n -r 'Index creation finished' /path/to/neo4j-community-version/logs/debug.log
+grep -n -r 'Index creation finished' $NEO4J_HOME/logs/debug.log
 
 Record Neo4j loaded data size with index
-du -sh /path/to/neo4j-community-version/data/database/graph.db
+du -sb $NEO4j_HOME/data/database/graph.db/schema/index/
 
 
 Queries

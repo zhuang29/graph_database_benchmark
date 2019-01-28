@@ -7,7 +7,7 @@ from timeit import default_timer as timer
 from query_runner import *
 from config import *
 
-def run_bi_2(name_data, country1, country2, startDate, endDate, num_tests):
+def run_bi_9(name_data, tagClass1, tagClass2, threshold, num_tests):
     #create result folder
     if not os.path.exists(os.path.dirname("./result/")):
         try:
@@ -17,7 +17,7 @@ def run_bi_2(name_data, country1, country2, startDate, endDate, num_tests):
                 raise
 
 
-    ofile = open("result/bi_2" + "_" + name_data, 'a')
+    ofile = open("result/bi_9" + "_" + name_data, 'a')
     runner = Neo4jQueryRunner();
 
     total_time = 0.0
@@ -26,24 +26,24 @@ def run_bi_2(name_data, country1, country2, startDate, endDate, num_tests):
 
     for i in range(0, num_tests):
         start = timer()
-        runner.bi_2(country1, country2, startDate, endDate)
+        runner.bi_9(tagClass1, tagClass2, threshold)
         end = timer()
         exe_time = end - start
         total_time += exe_time
-        query_param = country1 + "," + country2 + "," +  startDate + "," +  endDate
-        line = name_data + "," +  "bi_2," + str(i) + "," + query_param + "," + str(exe_time) + " seconds"
+        query_param = tagClass1 + "," + tagClass2 + "," + threshold
+        line = name_data + "," +  "bi_9," + str(i) + "," + query_param + "," + str(exe_time) + " seconds"
         print(line)
         report += line + "\n"
-    report += "summary," +  name_data + "bi_2," + query_param + "," + str(total_time/num_tests) + " seconds"
+    report += "summary," +  name_data + "," + "bi_9," + query_param + "," + str(total_time/num_tests) + " seconds"
     ofile.write(report)
     print (report)
 
 
 if __name__ == "__main__":
     # kn.py file_name db_name num_iteration
-    if len(sys.argv) < 6:
-        print("Usage: python bi_2.py name_data param num_tests")
+    if len(sys.argv) < 5:
+        print("Usage: python bi_9.py name_data param num_tests")
         sys.exit()
-    # python bi_2.py snb_1 933 3
-    run_bi_2(os.path.basename(sys.argv[1]), sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], int(sys.argv[6]) if len(sys.argv) == 7 else "")
+    # python bi_9.py snb_1 933 3
+    run_bi_9(os.path.basename(sys.argv[1]), sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]) if len(sys.argv) == 6 else "")
 

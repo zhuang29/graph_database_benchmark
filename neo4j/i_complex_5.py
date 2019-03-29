@@ -7,7 +7,7 @@ from timeit import default_timer as timer
 from query_runner import *
 from config import *
 
-def run_i_complex_5(name_data, personId, num_tests):
+def run_i_complex_5(name_data, personId, minDate,num_tests):
     #create result folder
     if not os.path.exists(os.path.dirname("./result/")):
         try:
@@ -26,7 +26,7 @@ def run_i_complex_5(name_data, personId, num_tests):
 
     for i in range(0, num_tests):
         start = timer()
-        runner.i_complex_5(personId)
+        runner.i_complex_5(personId, minDate)
         end = timer()
         exe_time = end - start
         total_time += exe_time
@@ -45,5 +45,5 @@ if __name__ == "__main__":
         print("Usage: python i_complex_5.py name_data param num_tests")
         sys.exit()
     # python i_complex_5.py snb_1 933 3
-    run_i_complex_5(os.path.basename(sys.argv[1]), sys.argv[2], int(sys.argv[3]) if len(sys.argv) == 4 else "")
+    run_i_complex_5(os.path.basename(sys.argv[1]), sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) == 5 else "")
 

@@ -1,4 +1,4 @@
-. ./path_neo4j.sh
+#. ./path_neo4j.sh
 
 db=$1
 NEO4J_DB_DIR=$NEO4J_HOME/data/databases/$db.db

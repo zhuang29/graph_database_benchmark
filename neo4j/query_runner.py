@@ -166,15 +166,16 @@ class Neo4jQueryRunner(QueryRunner):
         record = result.peek()
         return record
 
-    def warm_up(self,name_data):
-        result = self.session.run("call apoc.warmup.run()")
+    def warm_up(self, name_data):
+        result = self.session.run("call apoc.warmup.run(true, true)")
         print 'warm up ready'
         sleep(200)
         record = result.peek()
         return record
 
 
-    def i_short_1(self, personId):
+    def i_short_1(self, param):
+        personId = param
         query = "MATCH (n:Person {id:" + personId + "})-[:IS_LOCATED_IN]->(p:Place) RETURN n.firstName AS firstName, n.lastName AS lastName, n.birthday AS birthday, n.locationIP AS locationIP, n.browserUsed AS browserUsed, p.id AS cityId, n.gender AS gender, n.creationDate AS creationDate"
         result = self.session.run(query)
         record = result.peek()
@@ -235,22 +236,15 @@ class Neo4jQueryRunner(QueryRunner):
     def i_complex_3(self, personId, startDate, durationDays, countryXName, countryYName):
         temp = int(startDate) + int(durationDays)*3600*24
         endDate = str(temp)
-#        print personId
-#        print startDate
-##        print endDate
-#        print temp
-#        print durationDays
-#        print countryXName
-#        print countryYName
         query = "MATCH (person:Person {id:" + personId + "})-[:KNOWS*1..2]-(friend:Person)<-[:HAS_CREATOR]-(messageX:Message), (messageX)-[:IS_LOCATED_IN]->(countryX:Place) WHERE not(person=friend) AND not((friend)-[:IS_LOCATED_IN]->()-[:IS_PART_OF]->(countryX)) AND countryX.name= '" + countryXName + "' AND messageX.creationDate>=" + startDate + " AND messageX.creationDate<" + endDate + " WITH friend, count(DISTINCT messageX) AS xCount MATCH (friend)<-[:HAS_CREATOR]-(messageY:Message)-[:IS_LOCATED_IN]->(countryY:Place) WHERE countryY.name='" + countryYName + "' AND not((friend)-[:IS_LOCATED_IN]->()-[:IS_PART_OF]->(countryY)) AND messageY.creationDate>=" + startDate + " AND messageY.creationDate<" + endDate  + " WITH friend.id AS personId, friend.firstName AS personFirstName, friend.lastName AS personLastName, xCount, count(DISTINCT messageY) AS yCount RETURN personId, personFirstName, personLastName, xCount, yCount, xCount + yCount AS count ORDER BY count DESC, toInteger(personId) ASC LIMIT 20"
-        print query
+        #print query
         result = self.session.run(query)
 	for records in result:
 	    print records
 	return result
 
     def i_complex_4(self, personId, startDate, durationDays):
-        temp = int(startDate) + durationDays*3600*24
+        temp = int(startDate) + durationDays
         endDate = str(temp)
         query = "MATCH (person:Person {id:" + personId + "})-[:KNOWS]-(:Person)<-[:HAS_CREATOR]-(post:Post)-[:HAS_TAG]->(tag:Tag) WHERE post.creationDate >= " + startDate + " AND post.creationDate < " + endDate + " WITH person, count(post) AS postsOnTag, tag OPTIONAL MATCH (person)-[:KNOWS]-()<-[:HAS_CREATOR]-(oldPost:Post)-[:HAS_TAG]->(tag) WHERE oldPost.creationDate < " + startDate + " WITH person, postsOnTag, tag, count(oldPost) AS cp WHERE cp = 0 RETURN tag.name AS tagName, sum(postsOnTag) AS postCount ORDER BY postCount DESC, tagName ASC LIMIT 10"
         result = self.session.run(query)
@@ -258,8 +252,8 @@ class Neo4jQueryRunner(QueryRunner):
             print records
 	return result
 
-    def i_complex_5(self, personId):
-        query = "MATCH (person:Person {id:" + personId + "})-[:KNOWS*1..2]-(friend:Person)<-[membership:HAS_MEMBER]-(forum:Forum) WHERE membership.joinDate>$minDate AND not(person=friend) WITH DISTINCT friend, forum OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(post:Post)<-[:CONTAINER_OF]-(forum) WITH forum, count(post) AS postCount RETURN forum.title AS forumTitle, postCount ORDER BY postCount DESC, toInteger(forum.id) ASC LIMIT 20"
+    def i_complex_5(self, personId, minDate):
+        query = "MATCH (person:Person {id:" + personId + "})-[:KNOWS*1..2]-(friend:Person)<-[membership:HAS_MEMBER]-(forum:Forum) WHERE membership.joinDate>" +  minDate + " AND not(person=friend) WITH DISTINCT friend, forum OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(post:Post)<-[:CONTAINER_OF]-(forum) WITH forum, count(post) AS postCount RETURN forum.title AS forumTitle, postCount ORDER BY postCount DESC, toInteger(forum.id) ASC LIMIT 20"
         result = self.session.run(query)
 	for records in result:
             print records
@@ -344,7 +338,7 @@ class Neo4jQueryRunner(QueryRunner):
 
     def bi_3(self, year, month):
         query = "WITH " + year + " AS year1," + month + " AS month1, " + year +  " + toInteger(" + month + "/ 12.0) AS year2," + month + "% 12 + 1 AS month2 MATCH (tag:Tag) OPTIONAL MATCH (message1:Message)-[:HAS_TAG]->(tag) WHERE message1.creationDate/10000000000000 = year1 AND message1.creationDate/100000000000%100 = month1 WITH year2, month2, tag, count(message1) AS countMonth1 OPTIONAL MATCH (message2:Message)-[:HAS_TAG]->(tag) WHERE message2.creationDate/10000000000000 = year2 AND message2.creationDate/100000000000%100 = month2 WITH tag, countMonth1, count(message2) AS countMonth2 RETURN tag.name, countMonth1, countMonth2, abs(countMonth1-countMonth2) AS diff ORDER BY diff DESC, tag.name ASC LIMIT 100"
-        print query
+#        print query
 #        print query2
 #        result1 = self.session.run(query1)
         result = self.session.run(query)
@@ -456,7 +450,6 @@ class Neo4jQueryRunner(QueryRunner):
 
     def bi_18(self, date, lengthThreshold, languages):
         query = "MATCH (person:Person) OPTIONAL MATCH (person)<-[:HAS_CREATOR]-(message:Message)-[:REPLY_OF*0..]->(post:Post) WHERE message.content IS NOT NULL AND message.length < " + lengthThreshold + " AND message.creationDate > " + date + " AND post.language IN " + languages + " WITH person, count(message) AS messageCount RETURN messageCount, count(person) AS personCount ORDER BY personCount DESC, messageCount DESC"
-        print query
         result = self.session.run(query)
 	for records in result:
 	    print records
@@ -504,12 +497,12 @@ class Neo4jQueryRunner(QueryRunner):
 	    print records
 	return result
 
-#    def bi_25(self,person1Id, person2Id, startDate, endDate):
-#    query = "MATCH path=allShortestPaths((p1:Person {id: " + person1Id + "})-[:KNOWS*]-(p2:Person {id: " + person2Id + "})) UNWIND relationships(path) AS k WITH path, startNode(k) AS pA,endNode(k) AS pB,0 AS relationshipWeightsOPTIONAL MATCH (pA)<-[:HAS_CREATOR]-(c:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(pB), (post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c)*1.0 AS relationshipWeightsOPTIONAL MATCH (pA)<-[:HAS_CREATOR]-(c1:Comment)-[:REPLY_OF]->(c2:Comment)-[:HAS_CREATOR]->(pB), (c2)-[:REPLY_OF*]->(:Post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c1)*0.5 AS relationshipWeights OPTIONAL MATCH (pA)<-[:HAS_CREATOR]-(c1:Comment)-[:REPLY_OF]->(c2:Comment)-[:HAS_CREATOR]->(pB), (c2)-[:REPLY_OF*]->(:Post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c1)*0.5 AS relationshipWeightsOPTIONAL MATCH (pB)<-[:HAS_CREATOR]-(c:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(pA), (post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c)*1.0 AS relationshipWeightsOPTIONAL MATCH (pB)<-[:HAS_CREATOR]-(c1:Comment)-[:REPLY_OF]->(c2:Comment)-[:HAS_CREATOR]->(pA), (c2)-[:REPLY_OF*]->(:Post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c1)*0.5 AS relationshipWeightsWITH [person IN nodes(path) | person.id] AS personIds, sum(relationshipWeights) AS weightRETURN personIds, weight ORDER BY weight DESC, personIds ASC"
-#        result = self.session.run(query)
-#	for records in result:
-#	    print records
-#	return result
+    def bi_25(self,person1Id, person2Id, startDate, endDate):
+        query = "MATCH path=allShortestPaths((p1:Person {id: " + person1Id + "})-[:KNOWS*]-(p2:Person {id: " + person2Id + "})) UNWIND relationships(path) AS k WITH path, startNode(k) AS pA,endNode(k) AS pB,0 AS relationshipWeights OPTIONAL MATCH (pA)<-[:HAS_CREATOR]-(c:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(pB), (post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c)*1.0 AS relationshipWeights OPTIONAL MATCH (pA)<-[:HAS_CREATOR]-(c1:Comment)-[:REPLY_OF]->(c2:Comment)-[:HAS_CREATOR]->(pB), (c2)-[:REPLY_OF*]->(:Post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c1)*0.5 AS relationshipWeights OPTIONAL MATCH (pA)<-[:HAS_CREATOR]-(c1:Comment)-[:REPLY_OF]->(c2:Comment)-[:HAS_CREATOR]->(pB), (c2)-[:REPLY_OF*]->(:Post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c1)*0.5 AS relationshipWeights OPTIONAL MATCH (pB)<-[:HAS_CREATOR]-(c:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(pA), (post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c)*1.0 AS relationshipWeights OPTIONAL MATCH (pB)<-[:HAS_CREATOR]-(c1:Comment)-[:REPLY_OF]->(c2:Comment)-[:HAS_CREATOR]->(pA), (c2)-[:REPLY_OF*]->(:Post)<-[:CONTAINER_OF]-(forum:Forum) WHERE forum.creationDate >= " + startDate + " AND forum.creationDate <= " + endDate + " WITH path, pA, pB, relationshipWeights + count(c1)*0.5 AS relationshipWeights WITH [person IN nodes(path) | person.id] AS personIds, sum(relationshipWeights) AS weight RETURN personIds, weight ORDER BY weight DESC, personIds ASC"
+        result = self.session.run(query)
+	for records in result:
+	    print records
+	return result
 
 
 

@@ -1,4 +1,5 @@
-path.sh
+Modeofy path in path.sh
+. ./path.sh
 #set path to Neo4j install directory, Neo4j database directory, raw data directory
 
 ./convert-data.sh
